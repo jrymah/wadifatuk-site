@@ -1,0 +1,33 @@
+# Protect push directory
+# Allow only API endpoints
+<FilesMatch "^(subscribe|send|stats|diagnostics)\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Block access to sensitive files
+<FilesMatch "^(config|VapidHelper)\.php$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Block all JSON files by default
+<FilesMatch "\.(json|log)$">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Allow latest.json specifically (Service Worker needs it)
+<Files "latest.json">
+    Order Allow,Deny
+    Allow from all
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Access-Control-Allow-Origin "*"
+</Files>
+
+# PHP settings
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log "push_errors.log"
+php_value upload_max_filesize 2M
+php_value post_max_size 4M

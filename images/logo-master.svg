@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#bgGrad)" filter="url(#shadow)"/>
+
+  <!-- Briefcase body -->
+  <rect x="112" y="210" width="288" height="200" rx="24" ry="24" fill="url(#bodyGrad)" opacity="0.97"/>
+
+  <!-- Briefcase handle -->
+  <path d="M192 210 L192 176 Q192 152 216 152 L296 152 Q320 152 320 176 L320 210"
+        fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Center clasp line -->
+  <rect x="112" y="292" width="288" height="18" rx="0" fill="#2563eb" opacity="0.2"/>
+
+  <!-- Magnifying glass on handle center -->
+  <circle cx="256" cy="183" r="18" fill="none" stroke="#10b981" stroke-width="5"/>
+  <line x1="268" y1="195" x2="278" y2="205" stroke="#10b981" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Checkmark inside briefcase -->
+  <path d="M186 310 L230 354 L326 258"
+        fill="none" stroke="#2563eb" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Emerald arrow (bottom right) -->
+  <g transform="translate(354,354)">
+    <circle r="30" fill="#10b981"/>
+    <path d="M-8 8 L0 -10 L8 8" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="0" y1="-10" x2="0" y2="12" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+  </g>
+</svg>

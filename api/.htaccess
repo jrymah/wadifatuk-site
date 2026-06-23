@@ -1,0 +1,31 @@
+# API Directory — وظيفتك
+# السماح بطلبات JSON وحماية قاعدة البيانات
+
+# Allow PHP execution
+<FilesMatch "\.php$">
+  Allow from all
+</FilesMatch>
+
+# Block direct access to db.php from outside
+<Files "db.php">
+  Order Allow,Deny
+  Deny from all
+</Files>
+
+# No caching for API responses
+<FilesMatch "jobs\.php$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  Header set Access-Control-Allow-Headers "Content-Type, X-Admin-Key"
+</FilesMatch>
+
+# Block .db files from direct access
+<FilesMatch "\.db$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+Options -Indexes

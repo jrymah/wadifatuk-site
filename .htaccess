@@ -1,0 +1,179 @@
+# ============================================================
+# Hostinger .htaccess — وظيفتك.com | v2 | مايو 2026
+# ============================================================
+
+# ── Character Encoding (UTF-8) ────────────────────────────────
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .htm .css .js .json .xml .txt .svg
+
+# ── Force HTTPS ──────────────────────────────────────────────
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Force www ─────────────────────────────────────────────────
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Remove trailing slash (except root) ───────────────────────
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# ── Custom Error Pages ────────────────────────────────────────
+ErrorDocument 404 /404.html
+ErrorDocument 403 /404.html
+ErrorDocument 500 /404.html
+
+# ── Security Headers ──────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  # ⚠️ مهم: connect-src يجب أن يتضمن نطاقات Supabase وإلا تُحجب طلبات fetch() من المتصفح
+  # https://*.supabase.co   = REST API (تحميل/نشر الوظائف)
+  # wss://*.supabase.co     = Realtime WebSocket (تحديث فوري)
+  # https://cdn.jsdelivr.net = Supabase JS CDN (script-src)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://www.google-analytics.com https://partner.googleadservices.com https://tpc.googlesyndication.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https: blob:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://emailjs.com https://api.emailjs.com https://fcm.googleapis.com https://*.push.apple.com https://updates.push.services.mozilla.com https://push.services.mozilla.com wss://*.push.services.mozilla.com https://*.supabase.co wss://*.supabase.co; frame-src https://www.google.com https://googleads.g.doubleclick.net; worker-src 'self' blob:; manifest-src 'self'"
+  # Remove X-Powered-By header
+  Header unset X-Powered-By
+  Header always unset X-Powered-By
+</IfModule>
+
+# ── Service Worker ────────────────────────────────────────────
+<Files "sw.js">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires "0"
+  Header set Service-Worker-Allowed "/"
+  Header set Content-Type "application/javascript; charset=utf-8"
+</Files>
+
+# ── WebManifest ───────────────────────────────────────────────
+<Files "site.webmanifest">
+  Header set Content-Type "application/manifest+json; charset=utf-8"
+  Header set Cache-Control "public, max-age=86400"
+</Files>
+
+# ── Push API: no cache ────────────────────────────────────────
+<FilesMatch "^(subscribe|send|stats|diagnostics)\.php$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+</FilesMatch>
+
+# ── Jobs API & all API PHP: never cache ───────────────────────
+<FilesMatch "\.php$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+  Header set Pragma "no-cache"
+  Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+</FilesMatch>
+
+# ── Digital Asset Links (for TWA) ─────────────────────────────
+<Files "assetlinks.json">
+  Header set Content-Type "application/json; charset=utf-8"
+  Header set Access-Control-Allow-Origin "*"
+  Header set Cache-Control "public, max-age=3600"
+</Files>
+
+# ── Block admin from indexing ─────────────────────────────────
+<FilesMatch "(panel|push-diagnostics)\.html$">
+  Header set X-Robots-Tag "noindex, nofollow"
+</FilesMatch>
+
+# ── GZIP / Brotli Compression ─────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml
+  AddOutputFilterByType DEFLATE text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/manifest+json
+  AddOutputFilterByType DEFLATE image/svg+xml image/x-icon
+  AddOutputFilterByType DEFLATE font/ttf font/otf font/woff font/woff2
+  # Remove browser bugs (for old browsers)
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+  Header append Vary User-Agent
+</IfModule>
+
+# ── Browser Caching ───────────────────────────────────────────
+# data.js يجلب الوظائف من السيرفر — يجب ألا يُخزَّن طويلاً
+<FilesMatch "data\.js$">
+  Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+  Header set Pragma "no-cache"
+  Header set Expires "Thu, 01 Jan 1970 00:00:00 GMT"
+</FilesMatch>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML — قصير
+  ExpiresByType text/html                    "access plus 1 hour"
+  # CSS / JS — قصير (لضمان تحديث الوظائف)
+  ExpiresByType text/css                     "access plus 1 day"
+  ExpiresByType application/javascript       "access plus 1 day"
+  ExpiresByType text/javascript              "access plus 1 day"
+  # Images — طويل
+  ExpiresByType image/png                    "access plus 1 year"
+  ExpiresByType image/jpeg                   "access plus 1 year"
+  ExpiresByType image/jpg                    "access plus 1 year"
+  ExpiresByType image/gif                    "access plus 1 year"
+  ExpiresByType image/webp                   "access plus 1 year"
+  ExpiresByType image/avif                   "access plus 1 year"
+  ExpiresByType image/svg+xml                "access plus 1 year"
+  ExpiresByType image/x-icon                 "access plus 1 year"
+  # Fonts — طويل جداً
+  ExpiresByType font/woff                    "access plus 2 years"
+  ExpiresByType font/woff2                   "access plus 2 years"
+  ExpiresByType font/ttf                     "access plus 2 years"
+  ExpiresByType application/font-woff        "access plus 2 years"
+  # Manifest / JSON
+  ExpiresByType application/manifest+json    "access plus 1 day"
+  # لا تُخزَّن ردود JSON (API يتغير باستمرار)
+  ExpiresByType application/json             "access plus 0 seconds"
+</IfModule>
+
+# ── WebP Serving (يخدم WebP إذا وُجد وكان المتصفح يدعمه) ────
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_FILENAME} \.(png|jpe?g)$
+  RewriteCond %{REQUEST_FILENAME}\.webp -f
+  RewriteRule ^(.+)\.(png|jpe?g)$ $1.%2\.webp [T=image/webp,E=REQUEST_image,L]
+</IfModule>
+<IfModule mod_headers.c>
+  Header append Vary Accept env=REQUEST_image
+</IfModule>
+
+# ── Deny access to sensitive files ────────────────────────────
+<FilesMatch "\.(env|log|sh|bak|sql|conf|ini|DS_Store)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# ── Block direct access to SQLite database ────────────────────
+<FilesMatch "\.db$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# ── Block Python scripts (local only, don't serve) ────────────
+<FilesMatch "\.py$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# ── Block direct access to JSON data files ────────────────────
+<FilesMatch "^(subscriptions|push-log|push-debug)\.(json|log)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# ── CORS for fonts ────────────────────────────────────────────
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font\.css|css)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# ── ETag Optimization ─────────────────────────────────────────
+FileETag MTime Size

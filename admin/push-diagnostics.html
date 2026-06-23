@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تشخيص إشعارات Push — بوست وظيفتك</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;padding:24px}
+    h1{font-size:1.6rem;margin-bottom:4px;color:#f8fafc}
+    .sub{color:#94a3b8;font-size:.9rem;margin-bottom:24px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:24px}
+    .card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:20px}
+    .card-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+    .row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1e293b}
+    .row:last-child{border:none}
+    .label{color:#94a3b8;font-size:.85rem}
+    .val{font-size:.9rem;font-weight:600}
+    .ok{color:#4ade80}.warn{color:#facc15}.err{color:#f87171}.info{color:#60a5fa}
+    .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700}
+    .badge.ok{background:#052e16;color:#4ade80;border:1px solid #166534}
+    .badge.err{background:#2d0a0a;color:#f87171;border:1px solid #991b1b}
+    .badge.warn{background:#2d1f00;color:#facc15;border:1px solid #92400e}
+    .badge.info{background:#0c1a2e;color:#60a5fa;border:1px solid #1e40af}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;border:none;cursor:pointer;font-size:.9rem;font-weight:600;transition:.2s}
+    .btn-primary{background:#2563eb;color:#fff}
+    .btn-primary:hover{background:#1d4ed8}
+    .btn-success{background:#16a34a;color:#fff}
+    .btn-success:hover{background:#15803d}
+    .btn-warn{background:#d97706;color:#fff}
+    .btn-warn:hover{background:#b45309}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+    pre{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:14px;font-size:.78rem;overflow-x:auto;color:#94a3b8;max-height:200px;overflow-y:auto}
+    #log{background:#0f172a;border:1px solid #334155;border-radius:8px;padding:14px;font-size:.8rem;max-height:300px;overflow-y:auto;font-family:monospace;white-space:pre-wrap}
+    .log-ok{color:#4ade80}.log-err{color:#f87171}.log-warn{color:#facc15}.log-info{color:#94a3b8}
+    .spinner{display:inline-block;width:14px;height:14px;border:2px solid #fff3;border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .sep{height:1px;background:#334155;margin:20px 0}
+  </style>
+</head>
+<body>
+<h1><i class="fas fa-stethoscope" style="color:#6366f1"></i> تشخيص نظام Push</h1>
+<p class="sub">لوحة تشخيص إشعارات PWA — بوست وظيفتك | <span id="ts"></span></p>
+
+<div class="actions">
+  <button class="btn btn-primary" onclick="runDiag()"><i class="fas fa-sync"></i> تحديث الكل</button>
+  <button class="btn btn-success" onclick="subscribeNow()"><i class="fas fa-bell"></i> اشترك الآن</button>
+  <button class="btn btn-warn" onclick="sendTest()"><i class="fas fa-paper-plane"></i> إرسال اختبار</button>
+  <button class="btn" style="background:#475569;color:#fff" onclick="clearLog()"><i class="fas fa-trash"></i> مسح السجل</button>
+</div>
+
+<!-- Client-Side Status -->
+<div class="grid">
+  <div class="card">
+    <div class="card-title"><i class="fas fa-mobile-alt"></i> حالة الجهاز (Client)</div>
+    <div class="row"><span class="label">Service Worker</span><span id="sw-status" class="val">...</span></div>
+    <div class="row"><span class="label">إذن الإشعارات</span><span id="perm-status" class="val">...</span></div>
+    <div class="row"><span class="label">Push Subscription</span><span id="sub-status" class="val">...</span></div>
+    <div class="row"><span class="label">IndexedDB / Storage</span><span id="storage-status" class="val">...</span></div>
+    <div class="row"><span class="label">المتصفح</span><span id="browser-info" class="val info">...</span></div>
+  </div>
+
+  <!-- Server-Side Status -->
+  <div class="card">
+    <div class="card-title"><i class="fas fa-server"></i> حالة السيرفر (Server)</div>
+    <div class="row"><span class="label">VAPID مُضبَّط</span><span id="vapid-ok" class="val">...</span></div>
+    <div class="row"><span class="label">المفتاح الخاص</span><span id="privkey-ok" class="val">...</span></div>
+    <div class="row"><span class="label">تشفير ECDH</span><span id="enc-ok" class="val">...</span></div>
+    <div class="row"><span class="label">ملف الاشتراكات</span><span id="file-ok" class="val">...</span></div>
+    <div class="row"><span class="label">إصدار PHP</span><span id="php-ver" class="val info">...</span></div>
+    <div class="row"><span class="label">OpenSSL</span><span id="ssl-ver" class="val info">...</span></div>
+  </div>
+
+  <!-- Subscription Stats -->
+  <div class="card">
+    <div class="card-title"><i class="fas fa-users"></i> إحصائيات المشتركين</div>
+    <div class="row"><span class="label">إجمالي المشتركين</span><span id="total-subs" class="val info">...</span></div>
+    <div class="row"><span class="label">نشط</span><span id="active-subs" class="val ok">...</span></div>
+    <div class="row"><span class="label">Android Chrome</span><span id="dev-android" class="val">...</span></div>
+    <div class="row"><span class="label">iOS Safari</span><span id="dev-ios" class="val">...</span></div>
+    <div class="row"><span class="label">Samsung Browser</span><span id="dev-samsung" class="val">...</span></div>
+    <div class="row"><span class="label">Desktop</span><span id="dev-desktop" class="val">...</span></div>
+  </div>
+
+  <!-- VAPID Keys -->
+  <div class="card">
+    <div class="card-title"><i class="fas fa-key"></i> VAPID Public Key</div>
+    <pre id="vapid-pub" style="max-height:80px;font-size:.7rem">جاري التحميل...</pre>
+    <div class="row"><span class="label">وقت السيرفر</span><span id="srv-time" class="val info">...</span></div>
+    <div class="row"><span class="label">ADMIN_TOKEN (أول 12 حرف)</span><span id="tok-preview" class="val warn">...</span></div>
+  </div>
+</div>
+
+<!-- Send Test Form -->
+<div class="card" style="margin-bottom:16px">
+  <div class="card-title"><i class="fas fa-paper-plane"></i> إرسال إشعار اختباري</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+    <input id="test-title" type="text" value="اختبار 🔔" style="flex:1;min-width:180px;background:#0f172a;border:1px solid #334155;color:#e2e8f0;padding:8px 12px;border-radius:8px;font-size:.9rem">
+    <input id="test-body" type="text" value="هذا إشعار تجريبي من لوحة التشخيص" style="flex:2;min-width:220px;background:#0f172a;border:1px solid #334155;color:#e2e8f0;padding:8px 12px;border-radius:8px;font-size:.9rem">
+    <button class="btn btn-warn" onclick="sendTest()"><i class="fas fa-flask"></i> أرسل</button>
+  </div>
+  <div id="send-result" style="display:none;margin-top:12px;padding:10px 14px;border-radius:8px;font-size:.85rem"></div>
+</div>
+
+<!-- Activity Log -->
+<div class="card">
+  <div class="card-title"><i class="fas fa-terminal"></i> سجل النشاط الفوري</div>
+  <div id="log"></div>
+</div>
+
+<script>
+/* ── Config ─────────────────────────────────────── */
+const PUSH_BASE = '../push/';
+
+/* ── Admin token (must match config.php ADMIN_TOKEN) ── */
+async function getToken() {
+  const raw = 'Aajrymah@4431_BAbfIgT3scWQH_IEbwfpbI36F3hABqKzc-3MkdihomtgfSUF7-5qSNHfedXTrdIh2wJgFUliozHPsoX8lcy30Vs';
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(raw));
+  const hex = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  return 'wdf_adm_' + hex;
+}
+let _tok = null;
+async function tok() { if(!_tok) _tok = await getToken(); return _tok; }
+
+/* ── Logging ─────────────────────────────────────── */
+function log(msg, type='info') {
+  const d = document.getElementById('log');
+  const t = new Date().toLocaleTimeString('ar');
+  const cls = {ok:'log-ok',err:'log-err',warn:'log-warn',info:'log-info'}[type]||'log-info';
+  d.innerHTML += `<span class="${cls}">[${t}] ${msg}\n</span>`;
+  d.scrollTop = d.scrollHeight;
+}
+function clearLog() { document.getElementById('log').innerHTML=''; }
+
+/* ── Badge helper ──────────────────────────────────── */
+function badge(ok, labels=['✅ نعم','❌ لا','⚠️ تحذير']) {
+  if(ok===true)   return `<span class="badge ok">${labels[0]}</span>`;
+  if(ok===false)  return `<span class="badge err">${labels[1]}</span>`;
+  return `<span class="badge warn">${labels[2]}</span>`;
+}
+function set(id, html) { const el=document.getElementById(id); if(el) el.innerHTML=html; }
+
+/* ── Client diagnostics ───────────────────────────── */
+async function checkClient() {
+  document.getElementById('ts').textContent = new Date().toLocaleString('ar-SA');
+  document.getElementById('browser-info').textContent = navigator.userAgent.slice(0,60)+'…';
+
+  // Service Worker
+  if ('serviceWorker' in navigator) {
+    const reg = await navigator.serviceWorker.getRegistration('/');
+    if (reg) {
+      const state = reg.active ? 'active' : reg.waiting ? 'waiting' : reg.installing ? 'installing' : 'none';
+      set('sw-status', badge(state==='active') + ` <small style="color:#94a3b8">${state}</small>`);
+      log(`SW: scope=${reg.scope} state=${state}`, state==='active'?'ok':'warn');
+    } else {
+      set('sw-status', badge(false));
+      log('Service Worker غير مسجّل', 'err');
+    }
+  } else {
+    set('sw-status', `<span class="badge err">غير مدعوم</span>`);
+  }
+
+  // Permission
+  const perm = Notification.permission;
+  set('perm-status', `<span class="badge ${perm==='granted'?'ok':perm==='denied'?'err':'warn'}">${
+    perm==='granted'?'✅ مسموح':perm==='denied'?'❌ محجوب':'⚠️ لم يُقرَّر'
+  }</span>`);
+  log(`إذن الإشعارات: ${perm}`, perm==='granted'?'ok':perm==='denied'?'err':'warn');
+
+  // Subscription
+  try {
+    const reg = await navigator.serviceWorker.getRegistration('/');
+    if (reg) {
+      const sub = await reg.pushManager.getSubscription();
+      if (sub) {
+        set('sub-status', badge(true));
+        log('Push Subscription موجودة: '+sub.endpoint.slice(0,60)+'…', 'ok');
+      } else {
+        set('sub-status', badge(false, ['موجودة','غير مشترك']));
+        log('لا توجد Push Subscription حالية', 'warn');
+      }
+    }
+  } catch(e) { set('sub-status', badge(null)); log('خطأ: '+e.message,'err'); }
+
+  // Storage
+  try {
+    await navigator.storage?.estimate?.();
+    set('storage-status', badge(true));
+  } catch { set('storage-status', badge(false)); }
+}
+
+/* ── Server diagnostics ───────────────────────────── */
+async function checkServer() {
+  const t = await tok();
+  set('tok-preview', `<code style="font-size:.75rem;color:#facc15">${t.slice(0,20)}…</code>`);
+
+  try {
+    const [statsRes, diagRes] = await Promise.all([
+      fetch(PUSH_BASE+'stats.php',       {headers:{'X-Admin-Token':t}}).then(r=>r.json()),
+      fetch(PUSH_BASE+'diagnostics.php', {headers:{'X-Admin-Token':t}}).then(r=>r.json()),
+    ]);
+
+    // Stats
+    set('total-subs',   `<span class="info">${statsRes.total ?? '?'}</span>`);
+    set('active-subs',  `<span class="ok">${statsRes.active ?? '?'}</span>`);
+    const dev = statsRes.devices || {};
+    set('dev-android',  dev.android||0);
+    set('dev-ios',      dev.ios||0);
+    set('dev-samsung',  dev.samsung||0);
+    set('dev-desktop',  dev.desktop||0);
+    set('php-ver',      statsRes.phpVersion||'?');
+    set('ssl-ver',      (statsRes.opensslVersion||'?').slice(0,40));
+    set('srv-time',     statsRes.serverTime ? new Date(statsRes.serverTime).toLocaleString('ar-SA') : '?');
+    set('vapid-pub',    statsRes.vapidPublicKey || diagRes.vapid_public_key || '—');
+
+    log(`Server stats: total=${statsRes.total} active=${statsRes.active} PHP=${statsRes.phpVersion}`, 'ok');
+
+    // Diag
+    set('vapid-ok',  badge(diagRes.vapid_ok ?? diagRes.vapid_configured));
+    set('privkey-ok',badge(diagRes.private_key_loadable));
+    set('enc-ok',    badge(diagRes.encryption_ok));
+    set('file-ok',   badge(diagRes.subscriptions_dir_writable));
+
+    if (diagRes.errors?.length) {
+      diagRes.errors.forEach(e => log('خطأ سيرفر: '+e,'err'));
+    } else {
+      log('Server diagnostics: OK', 'ok');
+    }
+
+  } catch(e) {
+    log('فشل الاتصال بالسيرفر: '+e.message,'err');
+    ['vapid-ok','privkey-ok','enc-ok','file-ok'].forEach(id=>set(id,badge(false)));
+  }
+}
+
+/* ── Subscribe ─────────────────────────────────── */
+async function subscribeNow() {
+  log('جاري الاشتراك...','info');
+  try {
+    const perm = await Notification.requestPermission();
+    if (perm !== 'granted') { log('رُفض الإذن','err'); return; }
+    const reg = await navigator.serviceWorker.ready;
+    const t = await tok();
+
+    // get public key from server
+    const resp = await fetch(PUSH_BASE+'stats.php', {headers:{'X-Admin-Token':t}});
+    const data = await resp.json();
+    const pubKey = data.vapidPublicKey || 'BAbfIgT3scWQH_IEbwfpbI36F3hABqKzc-3MkdihomtgfSUF7-5qSNHfedXTrdIh2wJgFUliozHPsoX8lcy30Vs';
+
+    function urlB64ToUint8Array(base64String) {
+      const padding = '='.repeat((4 - base64String.length % 4) % 4);
+      const base64 = (base64String + padding).replace(/-/g,'+').replace(/_/g,'/');
+      const rawData = window.atob(base64);
+      return Uint8Array.from([...rawData].map(c=>c.charCodeAt(0)));
+    }
+
+    const sub = await reg.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlB64ToUint8Array(pubKey)
+    });
+
+    const saveResp = await fetch(PUSH_BASE+'subscribe.php', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(sub)
+    });
+    const saveData = await saveResp.json();
+    if (saveData.ok) {
+      log('تم الاشتراك بنجاح! ✅','ok');
+      await checkServer();
+    } else {
+      log('فشل الحفظ: '+(saveData.error||'خطأ'),'err');
+    }
+  } catch(e) { log('خطأ: '+e.message,'err'); }
+}
+
+/* ── Send Test ─────────────────────────────────── */
+async function sendTest() {
+  const title = document.getElementById('test-title').value.trim() || 'اختبار 🔔';
+  const body  = document.getElementById('test-body').value.trim()  || 'إشعار تجريبي';
+  const res   = document.getElementById('send-result');
+  log(`إرسال اختبار: "${title}"…`,'info');
+
+  try {
+    const t = await tok();
+    const r = await fetch(PUSH_BASE+'send.php', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Admin-Token':t},
+      body: JSON.stringify({title,body,url:'/jobs.html',tag:'diag-test-'+Date.now()})
+    });
+    const data = await r.json();
+    res.style.display = 'block';
+    if (data.ok) {
+      res.style.cssText = 'display:block;margin-top:12px;padding:12px;border-radius:8px;background:#052e16;color:#4ade80;border:1px solid #166534;font-size:.85rem';
+      res.innerHTML = `✅ أُرسل لـ <strong>${data.sent}</strong> مشترك | فشل: ${data.failed} | منتهي: ${data.expired} | إجمالي: ${data.total}`;
+      log(`نتيجة الإرسال: sent=${data.sent} failed=${data.failed} expired=${data.expired}`,'ok');
+    } else {
+      res.style.cssText = 'display:block;margin-top:12px;padding:12px;border-radius:8px;background:#2d0a0a;color:#f87171;border:1px solid #991b1b;font-size:.85rem';
+      res.innerHTML = '❌ ' + (data.error || 'فشل الإرسال');
+      log('فشل: '+(data.error||'خطأ'),'err');
+    }
+  } catch(e) {
+    res.style.cssText = 'display:block;margin-top:12px;padding:12px;border-radius:8px;background:#2d0a0a;color:#f87171;border:1px solid #991b1b;font-size:.85rem';
+    res.innerHTML = '❌ خطأ: ' + e.message;
+    log('استثناء: '+e.message,'err');
+  }
+}
+
+/* ── Run All ───────────────────────────────────── */
+async function runDiag() {
+  log('═══ بدء التشخيص الشامل ═══','info');
+  await checkClient();
+  await checkServer();
+  log('═══ انتهى التشخيص ═══','ok');
+}
+
+// Auto-run on load
+window.addEventListener('load', runDiag);
+</script>
+</body>
+</html>

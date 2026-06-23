@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GT5JME726Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GT5JME726Z');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إلغاء الاشتراك - بوست وظيفتك</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/subscribe.css">
+  <link rel="stylesheet" href="css/pwa-install.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-inner">
+          <div class="header-logo">
+            <a href="index.html">
+              <div class="logo-icon"><i class="fas fa-briefcase"></i></div>
+              <span class="logo-text">بوست وظيفتك</span>
+            </a>
+          </div>
+          <nav class="header-nav">
+            <a href="index.html" class="nav-link">الرئيسية</a>
+            <a href="jobs.html" class="nav-link">جميع الوظائف</a>
+          </nav>
+          <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-nav" id="closeNav"><i class="fas fa-times"></i></button>
+    <div class="mobile-nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="jobs.html">جميع الوظائف</a>
+    </div>
+  </div>
+
+  <!-- Unsubscribe Content -->
+  <div class="unsub-page">
+    <div id="unsubscribeMessage">
+      <!-- Loading state -->
+      <div class="unsub-card">
+        <div class="unsub-icon">⏳</div>
+        <h2>جاري المعالجة...</h2>
+        <p>يرجى الانتظار</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom">
+      <div class="container">
+        <p>جميع الحقوق محفوظة &copy; <span id="currentYear"></span> بوست وظيفتك</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/data.js?v=5.0"></script>
+  <script src="js/main.js"></script>
+  <script src="js/subscribe.js"></script>
+  <script src="js/pwa-install.js" defer></script>
+</body>
+</html>

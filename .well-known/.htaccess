@@ -1,0 +1,7 @@
+# السماح بالوصول لملف assetlinks.json (مطلوب لـ TWA)
+<Files "assetlinks.json">
+  Require all granted
+  Header set Content-Type "application/json"
+  Header set Access-Control-Allow-Origin "*"
+  Header set Cache-Control "no-cache"
+</Files>

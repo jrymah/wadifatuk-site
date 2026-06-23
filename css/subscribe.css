@@ -1,0 +1,462 @@
+/* ================================================================
+   SUBSCRIPTION SYSTEM STYLES – wadifatuk.com
+   ================================================================ */
+
+/* ── Section: Newsletter Banner (Home/Jobs) ── */
+.newsletter-section {
+  padding: 70px 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1a56db 100%);
+  position: relative;
+  overflow: hidden;
+}
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M50 50v-6h-3v6h-6v3h6v6h3v-6h6v-3h-6zm0-40V4h-3v6h-6v3h6v6h3V13h6v-3h-6zM10 50v-6H7v6H1v3h6v6h3v-6h6v-3h-6zM10 10V4H7v6H1v3h6v6h3V13h6v-3h-6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.newsletter-section .container { position: relative; z-index: 2; }
+.newsletter-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.newsletter-content {}
+.newsletter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.newsletter-title {
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.newsletter-title span { color: #fbbf24; }
+.newsletter-desc {
+  font-size: 16px;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+.newsletter-features {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.newsletter-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+}
+.newsletter-feature i { color: #4ade80; font-size: 16px; }
+
+/* Form side */
+.newsletter-form-side {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+  padding: 40px;
+}
+.newsletter-form-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.newsletter-form-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 28px;
+}
+
+/* ── Sub Form Variants ── */
+.sub-form { position: relative; }
+
+/* Inline (horizontal) */
+.sub-form-inline .sub-inline-row {
+  display: flex;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  transition: border-color 0.3s;
+}
+.sub-form-inline .sub-inline-row:focus-within {
+  border-color: rgba(255,255,255,0.7);
+}
+.sub-form-inline .sub-input {
+  flex: 1;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--font, 'Tajawal', sans-serif);
+}
+.sub-form-inline .sub-input::placeholder { color: rgba(255,255,255,0.5); }
+.sub-form-inline .sub-btn {
+  padding: 16px 28px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #0f172a;
+  border: none;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: var(--font, 'Tajawal', sans-serif);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+.sub-form-inline .sub-btn:hover { background: linear-gradient(135deg, #f59e0b, #d97706); transform: none; }
+
+/* Card (stacked) */
+.sub-form-card .sub-input {
+  width: 100%;
+  padding: 15px 20px;
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  font-family: var(--font, 'Tajawal', sans-serif);
+  outline: none;
+  margin-bottom: 14px;
+  transition: border-color 0.3s, background 0.3s;
+  display: block;
+}
+.sub-form-card .sub-input:focus {
+  border-color: #fbbf24;
+  background: rgba(255,255,255,0.18);
+}
+.sub-form-card .sub-input::placeholder { color: rgba(255,255,255,0.5); }
+.sub-form-card .sub-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #0f172a;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 800;
+  font-family: var(--font, 'Tajawal', sans-serif);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s;
+}
+.sub-form-card .sub-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(251,191,36,0.4);
+}
+
+/* Footer variant */
+.sub-form-footer .sub-footer-row {
+  display: flex;
+  gap: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.sub-form-footer .sub-input {
+  flex: 1;
+  padding: 13px 16px;
+  background: rgba(255,255,255,0.07);
+  border: none;
+  outline: none;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  font-family: var(--font, 'Tajawal', sans-serif);
+}
+.sub-form-footer .sub-input::placeholder { color: rgba(255,255,255,0.4); }
+.sub-btn-footer {
+  padding: 13px 18px;
+  background: var(--primary, #1a56db);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+.sub-btn-footer:hover { background: #1342a8; }
+
+/* ── Messages ── */
+.sub-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 12px;
+  animation: subMsgIn 0.3s ease;
+}
+.sub-error {
+  background: rgba(239,68,68,0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239,68,68,0.3);
+}
+.sub-success {
+  background: rgba(74,222,128,0.2);
+  color: #86efac;
+  border: 1px solid rgba(74,222,128,0.3);
+}
+@keyframes subMsgIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Shake animation for invalid input */
+@keyframes subShake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-6px); }
+  80%       { transform: translateX(6px); }
+}
+.sub-shake { animation: subShake 0.5s ease !important; border-color: #ef4444 !important; }
+
+/* ── Popup Modal ── */
+.sub-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.sub-popup-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.sub-popup {
+  background: linear-gradient(160deg, #1e3a8a 0%, #1a56db 100%);
+  border-radius: 28px;
+  padding: 48px 40px 36px;
+  max-width: 460px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  transform: scale(0.85) translateY(30px);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+}
+.sub-popup-overlay.open .sub-popup {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+.sub-popup-close {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.sub-popup-close:hover { background: rgba(255,255,255,0.3); color: #fff; }
+.sub-popup-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #fbbf24;
+  margin: 0 auto 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.sub-popup-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.sub-popup-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.sub-popup-privacy {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.sub-popup-skip {
+  display: block;
+  margin: 14px auto 0;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  font-family: var(--font, 'Tajawal', sans-serif);
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.sub-popup-skip:hover { color: rgba(255,255,255,0.8); }
+
+/* ── Footer Subscribe Section ── */
+.footer-subscribe {
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 24px;
+}
+.footer-subscribe h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.footer-subscribe p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 14px;
+}
+
+/* ── Unsubscribe Page ── */
+.unsub-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+.unsub-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+  border: 1px solid #e2e8f0;
+}
+.unsub-icon { font-size: 56px; margin-bottom: 16px; }
+.unsub-card h2 { font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 12px; }
+.unsub-card p { font-size: 15px; color: #64748b; line-height: 1.8; margin-bottom: 28px; }
+.unsub-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: #1a56db;
+  color: #fff;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s;
+  margin: 8px;
+}
+.unsub-back-btn:hover { background: #1342a8; transform: translateY(-1px); }
+.unsub-resub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: #f1f5f9;
+  color: #1a56db;
+  border: 2px solid #1a56db;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font, 'Tajawal', sans-serif);
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 8px;
+}
+.unsub-resub-btn:hover { background: #1a56db; color: #fff; }
+
+/* ── Jobs Page – Inline Subscribe Strip ── */
+.jobs-subscribe-strip {
+  background: linear-gradient(135deg, #1e3a8a, #1a56db);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 30px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.jobs-subscribe-strip-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+.jobs-subscribe-strip-content { flex: 1; min-width: 180px; }
+.jobs-subscribe-strip-content h3 { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+.jobs-subscribe-strip-content p { font-size: 13px; color: rgba(255,255,255,0.75); }
+.jobs-subscribe-strip .sub-form { flex: 1; min-width: 280px; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .newsletter-inner { grid-template-columns: 1fr; gap: 40px; }
+  .newsletter-form-side { max-width: 560px; }
+}
+@media (max-width: 768px) {
+  .newsletter-section { padding: 48px 0; }
+  .newsletter-title { font-size: 24px; }
+  .newsletter-form-side { padding: 28px 20px; }
+  .sub-popup { padding: 36px 24px 28px; border-radius: 20px; }
+  .sub-popup-title { font-size: 20px; }
+  .jobs-subscribe-strip { gap: 16px; padding: 22px; }
+  .jobs-subscribe-strip-icon { font-size: 32px; }
+  .jobs-subscribe-strip .sub-form { min-width: 100%; }
+  .unsub-card { padding: 32px 20px; }
+  .unsub-card h2 { font-size: 22px; }
+}
+@media (max-width: 480px) {
+  .sub-form-inline .sub-inline-row { flex-direction: column; border-radius: 12px; }
+  .sub-form-inline .sub-btn { justify-content: center; border-radius: 0; }
+  .newsletter-inner { gap: 28px; }
+  .sub-popup { border-radius: 16px; }
+}

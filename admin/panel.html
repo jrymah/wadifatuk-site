@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة التحكم - بوست وظيفتك</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="../favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div id="adminPanel" class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-inner">
+        <div class="sidebar-logo-icon"><i class="fas fa-briefcase"></i></div>
+        <div class="sidebar-logo-text">بوست وظيفتك <span>لوحة التحكم</span></div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-title">الرئيسية</div>
+      <div class="sidebar-nav-item" data-page="dashboard"><i class="fas fa-chart-pie"></i> لوحة التحكم</div>
+
+      <div class="nav-section-title">إدارة المحتوى</div>
+      <div class="sidebar-nav-item" data-page="jobs"><i class="fas fa-list-ul"></i> إدارة الوظائف</div>
+      <div class="sidebar-nav-item" data-page="add-job"><i class="fas fa-plus-circle"></i> إضافة وظيفة</div>
+      <div class="sidebar-nav-item" data-page="categories"><i class="fas fa-th-large"></i> التصنيفات</div>
+
+
+      <div class="nav-section-title">التقارير</div>
+      <div class="sidebar-nav-item" data-page="stats"><i class="fas fa-chart-bar"></i> الإحصائيات</div>
+      <div class="sidebar-nav-item" data-page="subscribers"><i class="fas fa-envelope"></i> المشتركون <span id="subscribersBadge" style="background:#ef4444;color:#fff;font-size:11px;padding:1px 7px;border-radius:20px;margin-right:auto;display:none">0</span></div>
+
+      <div class="nav-section-title">النظام</div>
+      <div class="sidebar-nav-item" data-page="push"><i class="fas fa-bell"></i> إشعارات الجوال <span style="background:#16a34a;color:#fff;font-size:10px;padding:1px 6px;border-radius:20px;margin-right:6px">PWA</span></div>
+      <div class="sidebar-nav-item" data-page="email-logs"><i class="fas fa-history"></i> سجل البريد</div>
+      <div class="sidebar-nav-item" data-page="email-settings"><i class="fas fa-envelope-open-text"></i> إعدادات البريد</div>
+      <div class="sidebar-nav-item" data-page="settings"><i class="fas fa-cog"></i> الإعدادات</div>
+      <div class="sidebar-nav-item" onclick="window.open('../index.html','_blank')"><i class="fas fa-external-link-alt"></i> عرض الموقع</div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar"><i class="fas fa-user-shield"></i></div>
+        <div><div class="sidebar-user-name">المدير العام</div><div class="sidebar-user-role">Admin</div></div>
+      </div>
+      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="admin-page-title" id="adminPageTitle">لوحة التحكم الرئيسية</div>
+      </div>
+      <div class="topbar-actions">
+        <button class="topbar-btn topbar-btn-primary" id="addJobTopBtn"><i class="fas fa-plus"></i> إضافة وظيفة</button>
+        <a href="../index.html" target="_blank" class="topbar-btn" style="background:var(--gray-light);color:var(--gray)"><i class="fas fa-globe"></i> الموقع</a>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- DASHBOARD PAGE -->
+      <div id="page-dashboard" class="admin-page">
+        <div class="page-header"><h1>مرحباً بك في لوحة التحكم 👋</h1><p>إحصائيات وتقارير الموقع بشكل مباشر</p></div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card blue">
+            <div class="stat-card-icon"><i class="fas fa-briefcase"></i></div>
+            <div class="stat-card-value" id="dashTotalJobs">0</div>
+            <div class="stat-card-label">إجمالي الوظائف</div>
+            <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> نشطة</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-card-icon"><i class="fas fa-eye"></i></div>
+            <div class="stat-card-value" id="dashTotalViews">0</div>
+            <div class="stat-card-label">إجمالي المشاهدات</div>
+            <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> مشاهدة</div>
+          </div>
+          <div class="stat-card orange">
+            <div class="stat-card-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-card-value" id="dashTotalVisits">0</div>
+            <div class="stat-card-label">إجمالي الزيارات</div>
+            <div class="stat-card-change up"><i class="fas fa-arrow-up"></i> زيارة</div>
+          </div>
+          <div class="stat-card red">
+            <div class="stat-card-icon"><i class="fas fa-calendar-day"></i></div>
+            <div class="stat-card-value" id="dashTodayVisits">0</div>
+            <div class="stat-card-label">زيارات اليوم</div>
+            <div class="stat-card-change up"><i class="fas fa-clock"></i> اليوم</div>
+          </div>
+          <div class="stat-card purple" style="cursor:pointer" onclick="showPage('subscribers');setActivePage('subscribers');renderSubscribersPage()">
+            <div class="stat-card-icon"><i class="fas fa-envelope"></i></div>
+            <div class="stat-card-value" id="dashTotalSubscribers">0</div>
+            <div class="stat-card-label">المشتركون</div>
+            <div class="stat-card-change up"><i class="fas fa-bell"></i> نشط</div>
+          </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="charts-grid">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><i class="fas fa-chart-line" style="color:var(--primary)"></i> الزيارات اليومية (آخر 7 أيام)</div>
+            </div>
+            <div class="visit-bars" id="visitChartBars"></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-card-title"><i class="fas fa-chart-bar" style="color:var(--accent)"></i> الوظائف حسب التصنيف</div>
+            </div>
+            <div class="bar-chart" id="categoryChartBars"></div>
+          </div>
+        </div>
+
+        <!-- Recent Jobs -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title"><i class="fas fa-clock" style="color:var(--primary)"></i> أحدث الوظائف</div>
+            <button class="topbar-btn topbar-btn-primary" onclick="showPage('jobs');setActivePage('jobs')" style="font-size:13px;padding:7px 14px"><i class="fas fa-list"></i> عرض الكل</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>الجهة</th><th>التصنيف</th><th>الحالة</th><th>المشاهدات</th><th>إجراءات</th></tr></thead>
+              <tbody id="recentJobsTbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Top Jobs -->
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title"><i class="fas fa-trophy" style="color:var(--secondary)"></i> أكثر الوظائف مشاهدة</div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>الجهة</th><th>المشاهدات</th></tr></thead>
+              <tbody id="topJobsTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- JOBS PAGE -->
+      <div id="page-jobs" class="admin-page" style="display:none">
+        <div class="page-header"><h1>إدارة الوظائف</h1><p>عرض وتعديل وحذف جميع الوظائف</p></div>
+        <div class="data-card">
+          <div class="data-card-header">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="data-card-title">قائمة الوظائف</div>
+              <span id="adminJobsCount" style="font-size:13px;color:var(--gray);background:var(--gray-light);padding:3px 10px;border-radius:20px"></span>
+            </div>
+            <button class="topbar-btn topbar-btn-primary" onclick="showPage('add-job');setActivePage('add-job');renderAddJobForm()"><i class="fas fa-plus"></i> إضافة وظيفة جديدة</button>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>الجهة</th><th>التصنيف</th><th>نوع الدوام</th><th>الراتب</th><th>الجنس</th><th>الحالة</th><th>مشاهدات</th><th>إجراءات</th></tr></thead>
+              <tbody id="adminJobsTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD JOB PAGE -->
+      <div id="page-add-job" class="admin-page" style="display:none">
+        <div class="page-header"><h1 id="jobFormTitle">إضافة وظيفة جديدة</h1><p>أدخل تفاصيل الوظيفة الجديدة</p></div>
+        <div class="form-card">
+          <div class="form-card-body">
+            <div class="form-row full">
+              <div class="admin-form-group">
+                <label class="admin-label">اسم الشركة / الجهة <span>*</span></label>
+                <input type="text" id="fCompany" class="admin-input" placeholder="مثال: شركة أرامكو">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">شعار الجهة / الصورة</label>
+                <div class="logo-upload-wrap">
+                  <div class="logo-preview" id="logoPreview"><i class="fas fa-building"></i></div>
+                  <div style="flex:1">
+                    <label for="fLogoFile" class="btn btn-secondary" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:8px">
+                      <i class="fas fa-upload"></i> اختر صورة
+                    </label>
+                    <input type="file" id="fLogoFile" accept="image/*" style="display:none">
+                    <button type="button" class="btn btn-secondary" id="clearLogoBtn" style="margin-right:8px;display:inline-flex;align-items:center;gap:6px">
+                      <i class="fas fa-trash"></i> حذف
+                    </button>
+                    <div style="font-size:12px;color:var(--gray);margin-top:4px">صور JPG أو PNG أو SVG - حجم مناسب</div>
+                  </div>
+                  <input type="hidden" id="fLogo">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">المنطقة <span>*</span></label>
+                <select id="fCity" class="admin-select">
+                  <option value="">اختر المنطقة</option>
+                  <option value="all-cities" style="font-weight:700;color:#4f46e5">🌍 جميع المناطق</option>
+                  <option value="region-riyadh">🏙️ منطقة الرياض</option>
+                  <option value="region-makkah">🕌 منطقة مكة المكرمة</option>
+                  <option value="region-eastern">🛢️ المنطقة الشرقية</option>
+                  <option value="region-madinah">🌙 منطقة المدينة المنورة</option>
+                  <option value="region-qassim">🌾 منطقة القصيم</option>
+                  <option value="region-asir">⛰️ منطقة عسير</option>
+                  <option value="region-tabuk">🏜️ منطقة تبوك</option>
+                  <option value="region-hail">🌿 منطقة حائل</option>
+                  <option value="region-northern">🗺️ منطقة الحدود الشمالية</option>
+                  <option value="region-jizan">🌊 منطقة جازان</option>
+                  <option value="region-najran">🌴 منطقة نجران</option>
+                  <option value="region-bahah">🌲 منطقة الباحة</option>
+                  <option value="region-jawf">⭐ منطقة الجوف</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row" style="display:none">
+              <div class="admin-form-group">
+                <label class="admin-label">اسم المدينة بالعربية</label>
+                <input type="text" id="fCityName" class="admin-input" placeholder="تلقائي">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">التصنيف <span>*</span></label>
+                <select id="fCategory" class="admin-select">
+                  <option value="">اختر التصنيف</option>
+                  <option value="government">وظائف حكومية</option>
+                  <option value="military">وظائف عسكرية</option>
+                  <option value="corporate">وظائف شركات</option>
+                  <option value="medical">طبية وصحية</option>
+                  <option value="engineering">هندسة وتقنية</option>
+                  <option value="education">تعليم وتدريب</option>
+                  <option value="finance">مالية ومحاسبة</option>
+                  <option value="it">تقنية المعلومات</option>
+                  <option value="sales">مبيعات وتسويق</option>
+                  <option value="admin">إدارة وسكرتارية</option>
+                  <option value="construction">إنشاء ومقاولات</option>
+                  <option value="hospitality">فندقة وضيافة</option>
+                  <option value="qiyas">📝 اختبارات قياس</option>
+                  <option value="other">أخرى</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">نوع الدوام</label>
+                <select id="fType" class="admin-select">
+                  <option value="fulltime">دوام كامل</option>
+                  <option value="parttime">دوام جزئي</option>
+                  <option value="remote">عن بُعد</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">الراتب</label>
+                <input type="text" id="fSalary" class="admin-input" placeholder="مثال: 8,000 - 12,000 ريال">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">سنوات الخبرة</label>
+                <input type="text" id="fExperience" class="admin-input" placeholder="مثال: 3 سنوات">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">الجنس</label>
+                <select id="fGender" class="admin-select">
+                  <option value="للجنسين">للجنسين</option>
+                  <option value="ذكور">ذكور فقط</option>
+                  <option value="إناث">إناث فقط</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">المؤهل المطلوب</label>
+                <input type="text" id="fEducation" class="admin-input" placeholder="مثال: بكالوريوس">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">الشارة</label>
+                <select id="fBadge" class="admin-select">
+                  <option value="">بدون</option>
+                  <option value="new">جديد</option>
+                  <option value="urgent">عاجل</option>
+                  <option value="featured">مميز</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">حالة التقديم</label>
+                <select id="fStatus" class="admin-select">
+                  <option value="active">✔ متاح التقديم</option>
+                  <option value="closed">✖ منتهي</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">آخر موعد للتقديم <span style="font-size:12px;color:var(--gray);font-weight:400">(اختياري)</span></label>
+                <input type="date" id="fDeadline" class="admin-input">
+                <div style="font-size:12px;color:var(--gray);margin-top:4px"><i class="fas fa-info-circle"></i> إذا تركته فارغاً سيظهر "حتى الاكتفاء"</div>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="admin-form-group">
+                <label class="admin-label">وصف الوظيفة</label>
+                <textarea id="fDescription" class="admin-textarea" rows="4" placeholder="وصف تفصيلي للوظيفة..."></textarea>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="admin-form-group">
+                <label class="admin-label">المتطلبات (كل متطلب في سطر)</label>
+                <textarea id="fRequirements" class="admin-textarea" rows="4" placeholder="خبرة 3 سنوات&#10;إجادة اللغة الإنجليزية&#10;..."></textarea>
+              </div>
+            </div>
+            <div class="form-row full">
+              <div class="admin-form-group">
+                <label class="admin-label">المزايا (كل ميزة في سطر)</label>
+                <textarea id="fBenefits" class="admin-textarea" rows="3" placeholder="تأمين صحي&#10;سكن&#10;..."></textarea>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">الكلمات المفتاحية (مفصولة بفاصلة)</label>
+                <input type="text" id="fTags" class="admin-input" placeholder="برمجة، تقنية، هندسة">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">رابط التقديم</label>
+                <input type="text" id="fApplyUrl" class="admin-input" placeholder="https://...">
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px 0">
+              <input type="checkbox" id="fFeatured" style="width:18px;height:18px;accent-color:var(--primary)">
+              <label for="fFeatured" style="font-size:15px;font-weight:700;cursor:pointer">وظيفة مميزة (تظهر في الصفحة الرئيسية)</label>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-secondary" id="cancelJobBtn"><i class="fas fa-times"></i> إلغاء</button>
+              <button class="btn btn-primary" id="saveJobBtn"><i class="fas fa-paper-plane"></i> حفظ ونشر وإرسال الإشعارات</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIES PAGE -->
+      <div id="page-categories" class="admin-page" style="display:none">
+        <div class="page-header"><h1>التصنيفات</h1><p>إدارة تصنيفات الوظائف</p></div>
+        <div class="data-card">
+          <div class="data-card-header"><div class="data-card-title">جميع التصنيفات</div></div>
+          <div style="overflow-x:auto">
+            <table class="data-table">
+              <thead><tr><th>الأيقونة</th><th>الاسم</th><th>المعرّف</th><th>عدد الوظائف</th><th>الحالة</th><th>عرض</th></tr></thead>
+              <tbody id="categoriesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATS PAGE -->
+      <div id="page-stats" class="admin-page" style="display:none">
+        <div class="page-header"><h1>الإحصائيات والتقارير</h1><p>تحليل أداء الموقع والوظائف</p></div>
+        <div class="stats-grid">
+          <div class="stat-card blue"><div class="stat-card-icon"><i class="fas fa-users"></i></div><div class="stat-card-value" id="statsTotalVisits">0</div><div class="stat-card-label">إجمالي الزيارات</div></div>
+          <div class="stat-card green"><div class="stat-card-icon"><i class="fas fa-calendar-day"></i></div><div class="stat-card-value" id="statsTodayVisits">0</div><div class="stat-card-label">زيارات اليوم</div></div>
+          <div class="stat-card orange"><div class="stat-card-icon"><i class="fas fa-briefcase"></i></div><div class="stat-card-value" id="statsTotalJobs">0</div><div class="stat-card-label">إجمالي الوظائف</div></div>
+          <div class="stat-card purple"><div class="stat-card-icon"><i class="fas fa-eye"></i></div><div class="stat-card-value" id="statsTotalViews">0</div><div class="stat-card-label">إجمالي المشاهدات</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px">
+          <div class="chart-card">
+            <div class="chart-card-header"><div class="chart-card-title"><i class="fas fa-chart-line" style="color:var(--primary)"></i> الزيارات اليومية</div></div>
+            <div class="visit-bars" id="visitChartBars"></div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-header"><div class="chart-card-title"><i class="fas fa-map-marker-alt" style="color:var(--danger)"></i> المشاهدات حسب المدينة</div></div>
+            <div id="cityStatsBar" style="padding:8px 0"></div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-card-header"><div class="chart-card-title"><i class="fas fa-th-large" style="color:var(--accent)"></i> الوظائف حسب التصنيف</div></div>
+          <div id="catStatsBar" style="padding:8px 0"></div>
+        </div>
+      </div>
+
+      <!-- SUBSCRIBERS PAGE -->
+      <div id="page-subscribers" class="admin-page" style="display:none">
+        <div class="page-header"><h1>إدارة المشتركين 📧</h1><p>عرض وإدارة جميع المشتركين بالبريد الإلكتروني</p></div>
+
+        <!-- Stats Row -->
+        <div class="stats-grid" style="grid-template-columns:repeat(3,1fr);margin-bottom:24px">
+          <div class="stat-card green">
+            <div class="stat-card-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-card-value" id="subStatActive">0</div>
+            <div class="stat-card-label">مشترك نشط</div>
+          </div>
+          <div class="stat-card red">
+            <div class="stat-card-icon"><i class="fas fa-times-circle"></i></div>
+            <div class="stat-card-value" id="subStatInactive">0</div>
+            <div class="stat-card-label">مشترك ملغى</div>
+          </div>
+          <div class="stat-card blue">
+            <div class="stat-card-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-card-value" id="subStatTotal">0</div>
+            <div class="stat-card-label">الإجمالي</div>
+          </div>
+        </div>
+
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title"><i class="fas fa-list" style="color:var(--primary)"></i> قائمة المشتركين</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <input type="text" id="subSearchInput" class="admin-input" placeholder="🔍 بحث بالبريد..." style="max-width:220px;padding:8px 14px;font-size:13px">
+              <select id="subFilterStatus" class="admin-select" style="max-width:160px;padding:8px 14px;font-size:13px">
+                <option value="all">الكل</option>
+                <option value="active">نشط فقط</option>
+                <option value="inactive">ملغى فقط</option>
+              </select>
+              <button class="btn btn-secondary" id="exportSubsBtn" style="font-size:13px;padding:8px 14px"><i class="fas fa-file-csv"></i> تصدير CSV</button>
+              <button class="btn btn-danger" id="clearAllSubsBtn" style="font-size:13px;padding:8px 14px"><i class="fas fa-trash-alt"></i> حذف الكل</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table" id="subscribersTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>البريد الإلكتروني</th>
+                  <th>تاريخ الاشتراك</th>
+                  <th>الحالة</th>
+                  <th>رابط إلغاء الاشتراك</th>
+                  <th>إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="subscribersTbody"></tbody>
+            </table>
+          </div>
+          <div id="subEmptyState" style="display:none;text-align:center;padding:60px 20px;color:var(--gray)">
+            <div style="font-size:48px;margin-bottom:12px">📭</div>
+            <div style="font-size:18px;font-weight:700">لا يوجد مشتركون بعد</div>
+            <div style="font-size:14px;margin-top:6px">سيظهر المشتركون هنا بعد ملء نموذج الاشتراك</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL LOGS PAGE -->
+      <div id="page-email-logs" class="admin-page" style="display:none">
+        <div class="page-header"><h1>سجل البريد الإلكتروني 📬</h1><p>جميع عمليات إرسال البريد الإلكتروني</p></div>
+        <div class="stats-grid" style="grid-template-columns:repeat(4,1fr);margin-bottom:24px">
+          <div class="stat-card green"><div class="stat-card-icon"><i class="fas fa-check"></i></div><div class="stat-card-value" id="logStatSent">0</div><div class="stat-card-label">مرسل</div></div>
+          <div class="stat-card red"><div class="stat-card-icon"><i class="fas fa-times"></i></div><div class="stat-card-value" id="logStatFailed">0</div><div class="stat-card-label">فشل</div></div>
+          <div class="stat-card orange"><div class="stat-card-icon"><i class="fas fa-flask"></i></div><div class="stat-card-value" id="logStatDemo">0</div><div class="stat-card-label">وضع تجربة</div></div>
+          <div class="stat-card blue"><div class="stat-card-icon"><i class="fas fa-list"></i></div><div class="stat-card-value" id="logStatTotal">0</div><div class="stat-card-label">الإجمالي</div></div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title"><i class="fas fa-history" style="color:var(--primary)"></i> سجلات الإرسال</div>
+            <div style="display:flex;gap:10px">
+              <select id="logFilterType" class="admin-select" style="font-size:13px;padding:8px 12px">
+                <option value="all">الكل</option>
+                <option value="verification">رسائل التحقق</option>
+                <option value="job_notification">إشعارات الوظائف</option>
+              </select>
+              <button class="btn btn-danger" id="clearLogsBtn" style="font-size:13px;padding:8px 14px"><i class="fas fa-trash"></i> حذف السجل</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="data-table" id="emailLogsTable">
+              <thead><tr><th>#</th><th>البريد</th><th>النوع</th><th>الموضوع</th><th>الحالة</th><th>التاريخ</th></tr></thead>
+              <tbody id="emailLogsTbody"></tbody>
+            </table>
+          </div>
+          <div id="logsEmptyState" style="display:none;text-align:center;padding:60px;color:var(--gray)">
+            <div style="font-size:48px;margin-bottom:12px">📤</div>
+            <div style="font-size:18px;font-weight:700">لا توجد سجلات بعد</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EMAIL SETTINGS PAGE -->
+      <div id="page-email-settings" class="admin-page" style="display:none">
+        <div class="page-header"><h1>إعدادات البريد الإلكتروني ✉️</h1><p>تهيئة EmailJS لإرسال رسائل التحقق وإشعارات الوظائف</p></div>
+        <div class="form-card" style="max-width:720px">
+          <div class="form-card-body">
+            <div style="background:#fef3c7;border:1px solid #fcd34d;border-radius:12px;padding:16px;margin-bottom:24px;font-size:14px;line-height:1.8">
+              <strong>💡 خطوات الإعداد:</strong><br>
+              1. أنشئ حساباً على <a href="https://emailjs.com" target="_blank" style="color:#1a56db">emailjs.com</a> (مجاني 200 رسالة/شهر)<br>
+              2. أضف Email Service واختر Gmail أو Outlook<br>
+              3. أنشئ قالبَين: <code>template_verify</code> (تحقق) و <code>template_job</code> (وظيفة)<br>
+              4. انسخ Public Key من Account → General
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group" style="grid-column:span 2">
+                <label class="admin-label">تفعيل إرسال البريد</label>
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;font-size:15px;font-weight:600">
+                  <input type="checkbox" id="emailEnabled" style="width:18px;height:18px;accent-color:var(--primary)">
+                  <span>تفعيل إرسال البريد الإلكتروني عبر EmailJS</span>
+                </label>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">Service ID <span>*</span></label>
+                <input type="text" id="emailServiceId" class="admin-input" placeholder="service_xxxxxxx">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">Public Key <span>*</span></label>
+                <input type="text" id="emailPublicKey" class="admin-input" placeholder="xxxxxxxxxxxxxxxxxxxxxx">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">معرّف قالب التحقق</label>
+                <input type="text" id="emailVerifyTemplate" class="admin-input" placeholder="template_verify">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">معرّف قالب الوظيفة</label>
+                <input type="text" id="emailJobTemplate" class="admin-input" placeholder="template_job">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="saveEmailCfgBtn"><i class="fas fa-save"></i> حفظ الإعدادات</button>
+              <button class="btn btn-secondary" id="testEmailBtn"><i class="fas fa-paper-plane"></i> إرسال بريد تجريبي</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- PUSH NOTIFICATIONS PAGE -->
+      <div id="page-push" class="admin-page" style="display:none"></div>
+
+      <!-- SETTINGS PAGE -->
+      <div id="page-settings" class="admin-page" style="display:none">
+        <div class="page-header"><h1>إعدادات الموقع</h1><p>تخصيص معلومات الموقع</p></div>
+        <div class="form-card">
+          <div class="form-card-body">
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">اسم الموقع</label>
+                <input type="text" id="settingSiteName" class="admin-input">
+              </div>
+              <div class="admin-form-group">
+                <label class="admin-label">البريد الإلكتروني</label>
+                <input type="email" id="settingSiteEmail" class="admin-input" placeholder="admin@wadifatuk.com">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="admin-form-group">
+                <label class="admin-label">رقم الهاتف</label>
+                <input type="text" id="settingSitePhone" class="admin-input" placeholder="+966 5x xxx xxxx">
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="saveSettingsBtn"><i class="fas fa-save"></i> حفظ الإعدادات</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-card" style="margin-top:20px;border-color:#fee2e2">
+          <div class="data-card-header" style="padding:16px 24px"><div class="data-card-title" style="color:var(--danger)"><i class="fas fa-exclamation-triangle"></i> منطقة الخطر</div></div>
+          <div class="form-card-body" style="padding-top:0">
+            <p style="font-size:14px;color:var(--gray);margin-bottom:16px">إعادة ضبط جميع البيانات سيحذف الوظائف المضافة وإحصائيات الزيارات</p>
+            <button class="btn btn-danger" id="resetDataBtn"><i class="fas fa-trash-alt"></i> إعادة ضبط البيانات</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end admin-content -->
+  </main>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div class="modal-overlay" id="deleteModal">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-header">
+      <div class="modal-title">تأكيد الحذف</div>
+      <button class="modal-close" onclick="closeModal('deleteModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" style="text-align:center;padding:32px">
+      <div style="font-size:48px;margin-bottom:16px">🗑️</div>
+      <h3 style="margin-bottom:8px">هل أنت متأكد من حذف هذه الوظيفة؟</h3>
+      <p style="color:var(--gray);font-size:14px">لا يمكن التراجع عن هذا الإجراء</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('deleteModal')">إلغاء</button>
+      <button class="btn btn-danger" id="confirmDeleteBtn"><i class="fas fa-trash"></i> نعم، احذف</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/supabase-config.js"></script>
+<script src="../js/data.js?v=5.0"></script>
+<script src="../js/subscribe.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

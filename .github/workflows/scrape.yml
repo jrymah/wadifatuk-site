@@ -1,0 +1,118 @@
+# ═══════════════════════════════════════════════════════════════
+# wadifatuk.com — Automated Job Scraper
+# Source : https://www.ewdifh.com/
+# Target : Supabase  jobs  table  +  push/send.php
+#
+# Schedule  : every 3 hours (UTC)
+# Trigger   : also supports manual run from GitHub Actions UI
+#
+# GitHub Secrets required (Settings → Secrets → Actions):
+#   SUPABASE_URL       → https://zkelkmfxjobrsnvyaanv.supabase.co
+#   SUPABASE_ANON_KEY  → eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+#   SITE_URL           → https://www.wadifatuk.com
+# ═══════════════════════════════════════════════════════════════
+name: 🕷️ Scrape ewdifh.com → wadifatuk.com
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"   # Every 3 hours (free tier, no cost)
+
+  workflow_dispatch:
+    inputs:
+      debug_html:
+        description: "Dump raw HTML for debugging? (true / false)"
+        required: false
+        default: "false"
+      dry_run:
+        description: "Dry run — parse only, no DB writes? (true / false)"
+        required: false
+        default: "false"
+
+# Prevent overlapping runs
+concurrency:
+  group: scraper-singleton
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    name: Fetch & Insert Jobs
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write   # needed to commit seen_jobs.json back
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────────
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── 2. Python setup ────────────────────────────────────────────────
+      - name: 🐍 Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: scraper/requirements.txt
+
+      # ── 3. Install dependencies ────────────────────────────────────────
+      - name: 📦 Install dependencies
+        run: pip install --upgrade pip && pip install -r scraper/requirements.txt
+
+      # ── 4. Restore seen_jobs cache (speed up cold starts) ──────────────
+      - name: 💾 Restore dedup cache
+        uses: actions/cache@v4
+        with:
+          path: scraper/seen_jobs.json
+          key: seen-jobs-v2-${{ runner.os }}
+
+      # ── 5. Run scraper ─────────────────────────────────────────────────
+      - name: 🕷️ Run scraper
+        env:
+          SUPABASE_URL:      ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SITE_URL:          ${{ secrets.SITE_URL }}
+        run: |
+          set -e
+          if [ "${{ github.event.inputs.debug_html }}" = "true" ]; then
+            echo "=== DEBUG MODE: dumping HTML ==="
+            python scraper/scrape_jobs.py --debug-html
+          elif [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "=== DRY RUN: no DB writes ==="
+            DRY_RUN=1 python scraper/scrape_jobs.py
+          else
+            python scraper/scrape_jobs.py
+          fi
+
+      # ── 6. Show log ────────────────────────────────────────────────────
+      - name: 📋 Scraper log
+        if: always()
+        run: cat scraper/scraper.log 2>/dev/null || echo "(no log file)"
+
+      # ── 7. Show debug HTML (if requested) ─────────────────────────────
+      - name: 🔍 Debug HTML snippet
+        if: github.event.inputs.debug_html == 'true'
+        run: head -n 300 scraper/debug_ewdifh.html 2>/dev/null || echo "(no debug HTML)"
+
+      # ── 8. Commit seen_jobs.json back to repo ──────────────────────────
+      #    This is the primary persistence layer for deduplication.
+      #    The bot only commits when the file actually changed.
+      - name: 💾 Persist seen_jobs.json
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 bot: update seen_jobs.json [$(date -u '+%Y-%m-%d %H:%M UTC')]"
+          file_pattern: scraper/seen_jobs.json
+          commit_user_name: wadifatuk-bot
+          commit_user_email: bot@wadifatuk.com
+          skip_dirty_check: false
+
+      # ── 9. Upload log as artifact (7-day retention) ────────────────────
+      - name: 📤 Upload log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-log-run-${{ github.run_number }}
+          path: scraper/scraper.log
+          retention-days: 7

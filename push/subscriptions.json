@@ -1,0 +1,28 @@
+[
+    {
+        "id": "sub_6a24dcdf2f9ee4.49732547",
+        "endpoint": "https://fcm.googleapis.com/fcm/send/cxeiH79qUcI:APA91bFVucJwJTLI0-2TN6_1haz-TTrmYEeFndFGoWvJoluFs2hRyGyD7DI8iHPbs3I_45CQdf7_HBxpCIFRh_u9X_DQPIfOhOVZGT-it_9-5AjltvDNZG7gxwRRTLZZ43NUSZ8VaC3t",
+        "keys": {
+            "p256dh": "BHss6knYI6PR3BEiFKKYFy-snNCXvEDzJv-JbcxfyKU6P2YVaNU89jwNGIeWrghY12XEEC5w81rkwf2lZllXuA8",
+            "auth": "iC4GNiYNvmYqe3G3KarhyQ"
+        },
+        "device": "android",
+        "browser": "Chrome 148",
+        "createdAt": "2026-06-07T02:52:15+00:00",
+        "updatedAt": "2026-06-07T02:52:15+00:00",
+        "active": true
+    },
+    {
+        "id": "sub_6a25e35e3a5728.00643510",
+        "endpoint": "https://fcm.googleapis.com/fcm/send/f-iNVFSTor0:APA91bFzMmg5XrVYElDsxB7RmXx2HujcuNA-j0HF3ZJHmBcWtjN7x7u-veIlelCxl_kiOXw7r8NCsb979zbsrPP4P1c3LcLYGBuWrOV_IUZYtFrrSTSR_REiiBoK8gY2gshXLbrrc7XC",
+        "keys": {
+            "p256dh": "BEC5suErco9F8ntP9V-bcq7MnZ1JsFJ48hBn5iqGvkkpdGhBy62YkiF26qUohQWwrG3JpVLqXmemj4oG57bhPkI",
+            "auth": "W6AoWh5pU9urE8wTWXvlmA"
+        },
+        "device": "android",
+        "browser": "Chrome 148",
+        "createdAt": "2026-06-07T21:32:14+00:00",
+        "updatedAt": "2026-06-07T21:32:14+00:00",
+        "active": true
+    }
+]

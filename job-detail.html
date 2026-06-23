@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GT5JME726Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GT5JME726Z');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تفاصيل الوظيفة - بوست وظيفتك | موقع بوست وظيفتك</title>
+  <meta name="description" content="تعرف على تفاصيل هذه الوظيفة وطريقة التقديم عبر موقع بوست وظيفتك للوظائف في السعودية.">
+  <meta name="keywords" content="بوست وظيفتك, موقع بوست وظيفتك, وظائف السعودية, وظيفة جديدة">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pwa-install.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="header-top-inner">
+          <div class="header-logo">
+            <a href="index.html">
+              <div class="logo-icon"><i class="fas fa-briefcase"></i></div>
+              <span class="logo-text">بوست وظيفتك</span>
+            </a>
+          </div>
+          <nav class="header-nav">
+            <a href="index.html" class="nav-link nav-home">الرئيسية</a>
+            <a href="jobs.html" class="nav-link">جميع الوظائف</a>
+            <a href="jobs.html?cat=government" class="nav-link">وظائف حكومية</a>
+            <a href="jobs.html?cat=military" class="nav-link">وظائف عسكرية</a>
+            <a href="jobs.html?cat=corporate" class="nav-link">وظائف شركات</a>
+            <a href="jobs.html?cat=remote" class="nav-link">عن بُعد</a>
+            <a href="jobs.html?gender=إناث" class="nav-link" style="color:#db2777"><i class="fas fa-female"></i> للنساء</a>
+          </nav>
+          <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mobile-nav" id="mobileNav">
+    <button class="close-nav" id="closeNav"><i class="fas fa-times"></i></button>
+    <div class="mobile-nav-links">
+      <a href="index.html" style="background:linear-gradient(135deg,var(--primary),#4f46e5);color:white!important;font-weight:700;border-bottom:none;border-radius:10px;margin-bottom:6px">الرئيسية</a>
+      <a href="jobs.html">جميع الوظائف</a>
+      <a href="jobs.html?cat=government">وظائف حكومية</a>
+      <a href="jobs.html?cat=military">وظائف عسكرية</a>
+      <a href="jobs.html?gender=إناث" style="color:#db2777">👩 وظائف للنساء</a>
+    </div>
+  </div>
+
+  <div class="breadcrumb">
+    <div class="container">
+      <div class="breadcrumb-inner">
+        <a href="index.html">الرئيسية</a>
+        <i class="fas fa-chevron-left"></i>
+        <a href="jobs.html">الوظائف</a>
+        <i class="fas fa-chevron-left"></i>
+        <span id="breadcrumbTitle">تفاصيل الوظيفة</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="job-detail-section">
+      <div class="job-detail-grid" id="jobDetailContainer">
+        <div style="text-align:center;padding:80px;grid-column:1/-1">
+          <i class="fas fa-spinner fa-spin" style="font-size:40px;color:var(--primary)"></i>
+          <p style="margin-top:16px;color:var(--gray)">جاري التحميل...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Jobs -->
+    <section style="padding:40px 0 80px">
+      <div class="section-header">
+        <h2 class="section-title">وظائف مشابهة</h2>
+        <a href="jobs.html" class="view-all-btn">عرض الكل <i class="fas fa-arrow-left"></i></a>
+      </div>
+      <div class="jobs-grid" id="relatedJobsGrid"></div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-bottom" style="padding:30px 0">
+      <div class="container">
+        <p>جميع الحقوق محفوظة &copy; <span id="currentYear"></span> بوست وظيفتك</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/data.js?v=5.0"></script>
+  <script src="js/main.js?v=4.0"></script>
+  <script src="js/push-notifications.js" defer></script>
+  <script src="js/pwa-install.js" defer></script>
+  <script>
+    // Update breadcrumb after job loads
+    setTimeout(() => {
+      const params = new URLSearchParams(window.location.search);
+      const job = getJobById(params.get('id'));
+      if (job) document.getElementById('breadcrumbTitle').textContent = job.title;
+    }, 100);
+  </script>
+</body>
+</html>

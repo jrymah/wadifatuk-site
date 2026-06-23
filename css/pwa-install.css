@@ -1,0 +1,397 @@
+/* ═══════════════════════════════════════════════════════
+   Smart PWA Installation Guide System — Styles
+   wadifatuk.com | وظيفتك
+   Version: 1.0.0
+═══════════════════════════════════════════════════════ */
+
+/* ─── Modal Root ─────────────────────────────────────── */
+#pwaInstallModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  direction: rtl;
+}
+
+#pwaInstallModal.pwa-visible {
+  display: block;
+}
+
+/* ─── Backdrop ───────────────────────────────────────── */
+.pwa-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.pwa-backdrop.pwa-fade-in {
+  opacity: 1;
+}
+
+/* ─── Bottom Sheet ───────────────────────────────────── */
+.pwa-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-radius: 24px 24px 0 0;
+  padding: 28px 22px 36px;
+  box-shadow:
+    0 -8px 40px rgba(15, 23, 42, 0.18),
+    0 -2px 12px rgba(15, 23, 42, 0.08);
+  max-width: 560px;
+  margin: 0 auto;
+  transform: translateY(110%);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.pwa-sheet.pwa-slide-up {
+  transform: translateY(0);
+}
+
+/* drag handle */
+.pwa-sheet::before {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 4px;
+  border-radius: 2px;
+  background: #cbd5e1;
+  margin: 0 auto 22px;
+}
+
+/* ─── Close Button ───────────────────────────────────── */
+.pwa-close {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  font-family: sans-serif;
+}
+
+.pwa-close:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.pwa-close:focus-visible {
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
+}
+
+/* ─── App Identity ───────────────────────────────────── */
+.pwa-identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.pwa-app-icon {
+  width: 58px;
+  height: 58px;
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.35);
+}
+
+.pwa-app-info {
+  flex: 1;
+}
+
+.pwa-title {
+  font-size: 19px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 2px;
+  line-height: 1.3;
+}
+
+.pwa-tagline {
+  font-size: 13px;
+  color: #16a34a;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ─── Description ────────────────────────────────────── */
+.pwa-desc {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+/* ─── Benefits ───────────────────────────────────────── */
+.pwa-benefits {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.pwa-benefits li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: #334155;
+  font-weight: 600;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+.pwa-benefit-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ─── Steps ──────────────────────────────────────────── */
+.pwa-steps {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.pwa-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pwa-step:last-child {
+  margin-bottom: 0;
+}
+
+.pwa-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+.pwa-step-text {
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.65;
+  padding-top: 2px;
+}
+
+.pwa-step-text strong {
+  color: #0f172a;
+}
+
+.pwa-step-icon {
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+/* ─── Actions ────────────────────────────────────────── */
+.pwa-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Base button */
+.pwa-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: none;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.pwa-btn:active {
+  transform: scale(0.97);
+}
+
+.pwa-btn:focus-visible {
+  outline: 2px solid #16a34a;
+  outline-offset: 2px;
+}
+
+/* Primary — Install Now */
+.pwa-btn-primary {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.4);
+}
+
+.pwa-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(22, 163, 74, 0.5);
+}
+
+/* Secondary — Later */
+.pwa-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 2px solid #e2e8f0;
+}
+
+.pwa-btn-secondary:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: translateY(-1px);
+}
+
+/* Ghost — Never Show */
+.pwa-btn-ghost {
+  background: transparent;
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.pwa-btn-ghost:hover {
+  color: #64748b;
+  background: #f8fafc;
+}
+
+/* ─── Dark Mode ──────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  .pwa-sheet {
+    background: #1e293b;
+    box-shadow:
+      0 -8px 40px rgba(0, 0, 0, 0.5),
+      0 -2px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .pwa-sheet::before {
+    background: #475569;
+  }
+
+  .pwa-close {
+    background: #334155;
+    color: #94a3b8;
+  }
+
+  .pwa-close:hover {
+    background: #475569;
+    color: #f1f5f9;
+  }
+
+  .pwa-title {
+    color: #f1f5f9;
+  }
+
+  .pwa-desc {
+    color: #94a3b8;
+  }
+
+  .pwa-benefits li {
+    background: #15803d1a;
+    border-color: #16a34a40;
+    color: #cbd5e1;
+  }
+
+  .pwa-steps {
+    background: #0f172a;
+    border-color: #334155;
+  }
+
+  .pwa-step-text {
+    color: #cbd5e1;
+  }
+
+  .pwa-step-text strong {
+    color: #f1f5f9;
+  }
+
+  .pwa-btn-secondary {
+    background: #334155;
+    color: #cbd5e1;
+    border-color: #475569;
+  }
+
+  .pwa-btn-secondary:hover {
+    background: #475569;
+    color: #f1f5f9;
+  }
+
+  .pwa-btn-ghost {
+    color: #64748b;
+  }
+
+  .pwa-btn-ghost:hover {
+    background: #1e293b;
+    color: #94a3b8;
+  }
+}
+
+/* ─── Responsive Tweaks ──────────────────────────────── */
+@media (max-width: 380px) {
+  .pwa-sheet {
+    padding: 24px 16px 30px;
+  }
+
+  .pwa-benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .pwa-title {
+    font-size: 17px;
+  }
+}
+
+/* ─── Reduced Motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .pwa-sheet,
+  .pwa-backdrop,
+  .pwa-close,
+  .pwa-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+}

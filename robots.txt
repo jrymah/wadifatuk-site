@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Admin & Private
+Disallow: /admin/
+Disallow: /verify.html
+Disallow: /unsubscribe.html
+
+# Push API — لا تفهرس
+Disallow: /push/
+Allow: /push/latest.json
+
+# ملفات حساسة
+Disallow: /*.json$
+Allow: /site.webmanifest
+Allow: /push/latest.json
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /push/send.php
+Disallow: /push/subscribe.php
+Disallow: /push/diagnostics.php
+
+Sitemap: https://www.wadifatuk.com/sitemap.xml

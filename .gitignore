@@ -1,0 +1,7 @@
+scraper/scraper.log
+scraper/debug_ewdifh.html
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.log

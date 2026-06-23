@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="60%" style="stop-color:#1e3a8a"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+    <linearGradient id="iconBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.06"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Glow orb left -->
+  <circle cx="180" cy="315" r="200" fill="#2563eb" opacity="0.08"/>
+  <!-- Glow orb right -->
+  <circle cx="1050" cy="200" r="150" fill="#10b981" opacity="0.07"/>
+
+  <!-- Icon background circle -->
+  <circle cx="230" cy="315" r="160" fill="url(#iconBg)" opacity="0.15"/>
+  <circle cx="230" cy="315" r="140" fill="url(#iconBg)" opacity="0.2"/>
+
+  <!-- Briefcase icon (centered left) -->
+  <g transform="translate(130, 215)">
+    <!-- Body -->
+    <rect x="0" y="60" width="200" height="140" rx="16" fill="#ffffff" opacity="0.97"/>
+    <!-- Handle -->
+    <path d="M55 60 L55 36 Q55 18 74 18 L126 18 Q145 18 145 36 L145 60"
+          fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>
+    <!-- Checkmark -->
+    <path d="M28 130 L72 174 L172 74"
+          fill="none" stroke="#2563eb" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Search lens -->
+    <circle cx="100" cy="42" r="12" fill="none" stroke="#10b981" stroke-width="4"/>
+    <line x1="109" y1="51" x2="117" y2="59" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+    <!-- Arrow -->
+    <g transform="translate(162, 162)">
+      <circle r="20" fill="#10b981"/>
+      <path d="M-5 5 L0 -7 L5 5" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="0" y1="-7" x2="0" y2="9" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- Right side: Text content -->
+  <!-- Arabic brand name -->
+  <text x="680" y="240" font-family="'Tajawal','Arial',sans-serif" font-size="100" font-weight="900"
+        fill="#ffffff" text-anchor="middle">وظيفتك</text>
+
+  <!-- Domain -->
+  <text x="680" y="320" font-family="'Arial',sans-serif" font-size="36" font-weight="600"
+        fill="#60a5fa" text-anchor="middle">wadifatuk.com</text>
+
+  <!-- Tagline Arabic -->
+  <text x="680" y="400" font-family="'Tajawal','Arial',sans-serif" font-size="28" font-weight="400"
+        fill="#94a3b8" text-anchor="middle">بوابتك الذكية لاكتشاف أفضل الوظائف</text>
+
+  <!-- Divider -->
+  <rect x="480" y="430" width="400" height="3" rx="2" fill="url(#iconBg)" opacity="0.6"/>
+
+  <!-- Bottom tagline English -->
+  <text x="680" y="480" font-family="'Arial',sans-serif" font-size="22" font-weight="400"
+        fill="#64748b" text-anchor="middle">Saudi Arabia's Smart Job Discovery Portal</text>
+
+  <!-- Emerald accent bar bottom -->
+  <rect x="0" y="610" width="1200" height="20" fill="#10b981" opacity="0.7"/>
+
+  <!-- Dot decorations -->
+  <circle cx="440" cy="315" r="5" fill="#10b981" opacity="0.5"/>
+  <circle cx="920" cy="315" r="5" fill="#10b981" opacity="0.5"/>
+</svg>

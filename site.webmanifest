@@ -1,0 +1,54 @@
+{
+  "id": "/",
+  "name": "وظيفتك | Wadifatuk",
+  "short_name": "وظيفتك",
+  "description": "بوابتك الذكية لاكتشاف أفضل الوظائف في المملكة العربية السعودية",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "lang": "ar",
+  "dir": "rtl",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity"],
+  "prefer_related_applications": false,
+  "icons": [
+    { "src": "/images/icon-72x72.png",   "sizes": "72x72",   "type": "image/png" },
+    { "src": "/images/icon-96x96.png",   "sizes": "96x96",   "type": "image/png" },
+    { "src": "/images/icon-128x128.png", "sizes": "128x128", "type": "image/png" },
+    { "src": "/images/icon-144x144.png", "sizes": "144x144", "type": "image/png" },
+    { "src": "/images/icon-152x152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "/images/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/images/icon-256x256.png", "sizes": "256x256", "type": "image/png" },
+    { "src": "/images/icon-384x384.png", "sizes": "384x384", "type": "image/png" },
+    { "src": "/images/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/images/maskable-icon.svg","sizes": "512x512", "type": "image/svg+xml", "purpose": "maskable" },
+    { "src": "/favicon.svg",             "sizes": "any",      "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/og-image.svg",
+      "sizes": "1200x630",
+      "type": "image/svg+xml",
+      "label": "الصفحة الرئيسية"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "الوظائف",
+      "short_name": "وظائف",
+      "description": "تصفح جميع الوظائف المتاحة",
+      "url": "/jobs.html",
+      "icons": [{ "src": "/images/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "اختبارات قياس",
+      "short_name": "قياس",
+      "description": "تصفح اختبارات قياس المتاحة",
+      "url": "/jobs.html?cat=qiyas",
+      "icons": [{ "src": "/images/icon-96x96.png", "sizes": "96x96" }]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </linearGradient>
+  </defs>
+  <!-- Maskable safe zone: inner 80% = 102-410 -->
+  <!-- Full bleed background for maskable -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Briefcase body -->
+  <rect x="126" y="220" width="260" height="182" rx="22" fill="#ffffff" opacity="0.97"/>
+  <!-- Handle -->
+  <path d="M192 220 L192 186 Q192 162 216 162 L296 162 Q320 162 320 186 L320 220"
+        fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round"/>
+  <!-- Clasp line -->
+  <rect x="126" y="298" width="260" height="14" fill="#2563eb" opacity="0.15"/>
+  <!-- Checkmark -->
+  <path d="M182 310 L226 354 L330 250"
+        fill="none" stroke="#2563eb" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Search lens in handle -->
+  <circle cx="256" cy="192" r="16" fill="none" stroke="#10b981" stroke-width="5"/>
+  <line x1="267" y1="203" x2="277" y2="213" stroke="#10b981" stroke-width="5" stroke-linecap="round"/>
+  <!-- Growth arrow -->
+  <g transform="translate(364,364)">
+    <circle r="28" fill="#10b981"/>
+    <path d="M-7 7 L0 -9 L7 7" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="0" y1="-9" x2="0" y2="11" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

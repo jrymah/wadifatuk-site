@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GT5JME726Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GT5JME726Z');
+</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - الصفحة غير موجودة | بوست وظيفتك</title>
+  <meta name="description" content="الصفحة التي تبحث عنها غير موجودة. عد إلى الرئيسية لتصفح آلاف الوظائف.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/pwa-install.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Tajawal',sans-serif;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#1a56db 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;color:#fff;direction:rtl;overflow:hidden}
+    .stars{position:fixed;inset:0;pointer-events:none}
+    .star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s infinite}
+    @keyframes twinkle{0%,100%{opacity:0.2}50%{opacity:1}}
+    .container{text-align:center;padding:40px 20px;position:relative;z-index:2}
+    .error-code{font-size:clamp(100px,20vw,180px);font-weight:900;line-height:1;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;animation:float 3s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    .error-icon{font-size:48px;margin-bottom:20px;opacity:0.9}
+    h1{font-size:clamp(22px,4vw,36px);font-weight:800;margin-bottom:12px}
+    p{font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:36px;line-height:1.8;max-width:500px;margin-left:auto;margin-right:auto}
+    .btn-group{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn-primary{background:linear-gradient(135deg,#1a56db,#4f46e5);color:#fff;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;font-family:'Tajawal',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;border:2px solid transparent;box-shadow:0 4px 20px rgba(26,86,219,0.4)}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(26,86,219,0.6)}
+    .btn-secondary{background:rgba(255,255,255,0.1);color:#fff;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:700;font-family:'Tajawal',sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all 0.3s;border:2px solid rgba(255,255,255,0.3);backdrop-filter:blur(8px)}
+    .btn-secondary:hover{background:rgba(255,255,255,0.2);transform:translateY(-3px)}
+    .countdown{margin-top:28px;font-size:14px;color:rgba(255,255,255,0.6)}
+    .countdown span{color:#fbbf24;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="stars" id="stars"></div>
+  <div class="container">
+    <div class="error-icon">🔍</div>
+    <div class="error-code">404</div>
+    <h1>عذراً! الصفحة غير موجودة</h1>
+    <p>الصفحة التي تبحث عنها ربما تم نقلها أو حذفها أو أن الرابط غير صحيح. لا تقلق، يمكنك العودة للرئيسية وتصفح آلاف الوظائف.</p>
+    <div class="btn-group">
+      <a href="index.html" class="btn-primary"><i class="fas fa-home"></i> العودة للرئيسية</a>
+      <a href="jobs.html" class="btn-secondary"><i class="fas fa-briefcase"></i> تصفح الوظائف</a>
+    </div>
+    <div class="countdown">سيتم التحويل تلقائياً خلال <span id="sec">10</span> ثوانٍ</div>
+  </div>
+  <script>
+    // Stars
+    const s = document.getElementById('stars');
+    for(let i=0;i<80;i++){
+      const d = document.createElement('div');
+      d.className = 'star';
+      d.style.cssText = `left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*3}s;animation-duration:${2+Math.random()*3}s;width:${Math.random()*3}px;height:${Math.random()*3}px`;
+      s.appendChild(d);
+    }
+    // Countdown
+    let t = 10;
+    const el = document.getElementById('sec');
+    const iv = setInterval(()=>{t--;el.textContent=t;if(t<=0){clearInterval(iv);window.location.href='index.html';}},1000);
+  </script>
+  <script src="js/pwa-install.js" defer></script>
+</body>
+</html>

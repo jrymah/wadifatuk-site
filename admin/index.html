@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة - بوست وظيفتك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <div class="login-logo-icon"><i class="fas fa-shield-alt"></i></div>
+        <h1>لوحة إدارة بوست وظيفتك</h1>
+        <p>أدخل بياناتك للدخول إلى لوحة التحكم</p>
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">اسم المستخدم</label>
+          <div class="form-input-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" id="loginUsername" class="form-input" placeholder="أدخل اسم المستخدم" value="admin" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">كلمة المرور</label>
+          <div class="form-input-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="loginPassword" class="form-input" placeholder="أدخل كلمة المرور" value="wadifatuk2024" required>
+          </div>
+        </div>
+        <button type="submit" class="login-btn"><i class="fas fa-sign-in-alt"></i> دخول</button>
+      </form>
+      <div class="login-hint">
+        🔐 المستخدم: <strong>admin</strong> | كلمة المرور: <strong>wadifatuk2024</strong>
+      </div>
+    </div>
+  </div>
+  <script src="../js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
