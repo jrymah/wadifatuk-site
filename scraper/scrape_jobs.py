@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 ╔══════════════════════════════════════════════════════════════╗
-║        wadifatuk.com — Job Scraper  v2.0 (Production)       ║
+║        wadifatuk.com — Job Scraper  v3.0 (Production)       ║
 ║        Source : https://www.ewdifh.com/                     ║
 ║        Target : Supabase  jobs  table                       ║
+║        Format : 6-section structured template               ║
 ║        Selectors verified: 2026-06-23                       ║
 ╚══════════════════════════════════════════════════════════════╝
 
@@ -302,25 +303,250 @@ def fetch_listing(scraper) -> list[dict]:
     return results
 
 # ══════════════════════════════════════════════════════════════
+# SECTION KEYWORDS — map Arabic headers → structured slot
+# ══════════════════════════════════════════════════════════════
+# Each entry: keyword → slot name
+_SECTION_MAP = [
+    # —— More specific patterns FIRST (order matters) ——
+    # slot: details (must come before positions to catch "تفاصيل المسارات")
+    ("details",      ["تفاصيل المسارات", "تفاصيل البرنامج", "تفاصيل الوظيفة",
+                      "تفاصيل", "عن البرنامج", "نبذة", "الوصف"]),
+    # slot: positions
+    ("positions",    ["مسارات البرنامج", "مسار البرنامج", "المسارات",
+                      "المسمى الوظيفي", "المسميات", "الوظائف المتاحة",
+                      "الوظيفة", "التخصصات", "المجالات"]),
+    # slot: requirements
+    ("requirements", ["الشروط", "المتطلبات", "شروط التقديم", "متطلبات", "المؤهلات", "يشترط", "يُشترط"]),
+    # slot: benefits
+    ("benefits",     ["مزايا البرنامج", "مزايا", "التعويضات", "المكافآت", "المميزات",
+                      "ما يميز", "ما تقدمه", "يوفر البرنامج",
+                      "الراتب", "الحوافز", "الفوائد"]),
+    # slot: steps
+    ("steps",        ["خطوات التقديم", "خطوات الاشتراك",
+                      "آلية التقديم", "كيفية التقديم"]),
+    # slot: deadline
+    ("deadline_text",["موعد التقديم", "تاريخ التقديم", "آخر موعد", "مدة التقديم", "بدء التقديم"]),
+    # slot: apply method (catch "طريقة التقديم" separately from steps)
+    ("deadline_text",["طريقة التقديم", "طريقة الاشتراك"]),
+]
+
+def _match_slot(header: str) -> str:
+    """Return slot name for a header string, or 'other' if no match."""
+    h = header.strip()
+    for slot, keywords in _SECTION_MAP:
+        for kw in keywords:
+            if kw in h:
+                return slot
+    return "other"
+
+def _extract_bullets(tag) -> list[str]:
+    """
+    Given a BeautifulSoup tag, extract bullet items.
+    Handles both:
+      - <br>-separated lines inside a <p>
+      - child <li> elements
+    Strips leading dashes/hyphens and empty strings.
+    """
+    items = []
+    # Try <li> children first
+    lis = tag.find_all("li")
+    if lis:
+        for li in lis:
+            t = li.get_text(" ", strip=True)
+            if t:
+                items.append(t.lstrip("- \u200f\u200e"))
+        return items
+    # Fall back to <br>-split text
+    raw = str(tag)
+    from bs4 import BeautifulSoup
+    inner = BeautifulSoup(raw, "html.parser")
+    text  = inner.get_text(separator="\n")
+    for line in text.splitlines():
+        line = line.strip().lstrip("- \u200f\u200e")
+        if len(line) > 3:
+            items.append(line)
+    return items
+
+
+def format_description(
+    company:       str,
+    raw_html,        # BeautifulSoup tag: div.card-body
+    apply_url:     str,
+    deadline_iso:  str,
+    city_name:     str,
+    cat_name:      str,
+) -> str:
+    """
+    Converts raw card-body HTML into the approved 6-section Markdown template.
+
+    ewdifh.com DOM pattern (verified 2026-06-23):
+      <p>Intro text...</p>
+      <p><strong>مسارات البرنامج:</strong><br> - item1<br> - item2</p>
+      <p><strong>مزايا البرنامج:</strong><br> - item1<br> - item2</p>
+      ...
+
+    Each <p> either:
+      A) Starts with a <strong> header → defines a new slot + bullets follow
+      B) Is a plain paragraph → goes to current slot
+    """
+    from bs4 import BeautifulSoup
+
+    slots: dict[str, list[str]] = {
+        "intro":         [],
+        "positions":     [],
+        "requirements":  [],
+        "benefits":      [],
+        "steps":         [],
+        "deadline_text": [],
+        "details":       [],
+        "other":         [],
+    }
+
+    current_slot = "intro"
+
+    if raw_html:
+        # Remove ads first
+        for ad in raw_html.select("ins, script, .adsbygoogle"):
+            ad.decompose()
+
+        paragraphs = raw_html.find_all("p", recursive=True)
+
+        for p in paragraphs:
+            # Check if this <p> starts with a <strong> header
+            strong = p.find("strong")
+            if strong and p.get_text(strip=True).startswith(strong.get_text(strip=True)):
+                header_text = strong.get_text(strip=True)
+                current_slot = _match_slot(header_text)
+                # Remove strong from p to get remaining bullet text
+                strong.extract()
+
+            # Extract bullet lines from remaining <p> text (br-separated)
+            # Get inner HTML after removing strong, split by <br>
+            raw_p = str(p)
+            inner = BeautifulSoup(raw_p, "html.parser")
+            text  = inner.get_text(separator="\n")
+            for line in text.splitlines():
+                line = line.strip().lstrip("- \u200f\u200e\u2013")
+                if len(line) > 4:
+                    slots[current_slot].append(line)
+
+    # ── Deduplicate while preserving order ───────────────────
+    def dedup(lst: list[str]) -> list[str]:
+        seen_set: set[str] = set()
+        out = []
+        for x in lst:
+            x = x.strip()
+            if x and x not in seen_set:
+                seen_set.add(x)
+                out.append(x)
+        return out
+
+    for k in slots:
+        slots[k] = dedup(slots[k])
+
+    # ── Smart re-classification of "other" items ─────────────
+    for item in slots["other"] + slots["details"]:
+        lower = item
+        if any(kw in lower for kw in ["سعودي", "مؤهل", "خبرة", "شرط", "يشترط",
+                                       "بكالوريوس", "دبلوم", "ثانوي", "سنة", "سنوات"]):
+            if item not in slots["requirements"]:
+                slots["requirements"].append(item)
+        elif any(kw in lower for kw in ["راتب", "مكافأ", "حافز", "تأمين",
+                                         "إجازة", "بدل", "شهادة", "ممول"]):
+            if item not in slots["benefits"]:
+                slots["benefits"].append(item)
+
+    # ── Fallback: positions empty → use intro or details ─────
+    if not slots["positions"]:
+        if slots["intro"]:
+            slots["positions"] = slots["intro"][:3]
+        elif slots["details"]:
+            slots["positions"] = slots["details"][:3]
+
+    # ── Section 6: deadline + apply method ───────────────────
+    apply_lines = []
+
+    # Deadline text items (filter out link-only lines)
+    _LINK_NOISE = {"اضغط هنا", "انقر هنا", "هنا", "من خلال الرابط التالي:",
+                   "من خلال الرابط", "الرابط", "التقديم", "للتقديم"}
+
+    if slots["deadline_text"]:
+        for item in slots["deadline_text"]:
+            if item.strip() not in _LINK_NOISE and len(item) > 8:
+                apply_lines.append(item)
+
+    if not apply_lines and deadline_iso:
+        try:
+            d = date.fromisoformat(deadline_iso)
+            apply_lines.append(f"آخر موعد للتقديم: {d.strftime('%Y/%m/%d')}م")
+        except Exception:
+            pass
+
+    if not apply_lines:
+        apply_lines.append("التقديم مُتاح الآن")
+
+    if apply_url and apply_url not in ("#", ""):
+        if "@" in apply_url:
+            apply_lines.append("التقديم عبر إرسال السيرة الذاتية إلى البريد الإلكتروني المرفق في خانة التقديم أدناه")
+        else:
+            apply_lines.append("التقديم متاح عبر الرابط المرفق في خانة التقديم أدناه")
+    else:
+        apply_lines.append("التقديم متاح عبر الرابط المرفق في خانة التقديم أدناه")
+
+    # Steps — strip existing numeric prefix, filter noise
+    if slots["steps"]:
+        _NUM_PREFIX = re.compile(r'^\d+[-–.\s]+')
+        clean_steps = []
+        for step in slots["steps"]:
+            step = step.strip()
+            step = _NUM_PREFIX.sub("", step).strip()
+            if step and step not in _LINK_NOISE and len(step) > 5:
+                clean_steps.append(step)
+        clean_steps = dedup(clean_steps)
+        for i, step in enumerate(clean_steps, 1):
+            apply_lines.append(f"{i}- {step}")
+
+    apply_lines = dedup(apply_lines)
+
+    # ── Build final Markdown ──────────────────────────────────
+    def bullet_list(items: list[str], limit: int = 12) -> str:
+        if not items:
+            return "- (لم تُحدَّد)"
+        return "\n".join(f"- {item}" for item in items[:limit])
+
+    parts = [
+        f"**1. الجهة المعلنة:**\n- {company}",
+        f"**2. المسميات الوظيفية:**\n{bullet_list(slots['positions'])}",
+        f"**3. الشروط والمتطلبات:**\n{bullet_list(slots['requirements'])}",
+        f"**4. المزايا والتعويضات:**\n{bullet_list(slots['benefits'])}",
+        f"**5. مكان العمل:**\n- {city_name}",
+        f"**6. طريقة وموعد التقديم:**\n{bullet_list(apply_lines)}",
+    ]
+
+    return "\n\n".join(parts)
+
+
+
+# ══════════════════════════════════════════════════════════════
 # SCRAPING — job detail page
 # ══════════════════════════════════════════════════════════════
 def fetch_detail(url: str, scraper) -> dict:
     """
     Fetch /jobs/NNNNN and extract:
-      - description   (div.card-body > div > p tags → joined)
+      - raw_body      (BeautifulSoup div.card-body tag for format_description)
       - apply_url     (last <a> in card-body that is an external link)
       - category_slug (from  a[href*='/category/']  in the badge bar)
-      - deadline      (from  meta property="article:published_time"  + validThrough in JSON-LD)
-      - city_text     (all location keywords found in description)
-
-    Verified against live page /jobs/85473 on 2026-06-23.
+      - deadline      (from JSON-LD validThrough)
+      - city_text     (full text for city classification)
+      - plain_text    (raw plaintext of description for word-count check)
     """
     detail: dict = {
-        "description":    "",
-        "apply_url":      "#",
-        "category_slug":  "",
-        "deadline":       None,
-        "city_text":      "",
+        "raw_body":      None,
+        "plain_text":    "",
+        "apply_url":     "#",
+        "category_slug": "",
+        "deadline":      None,
+        "city_text":     "",
     }
     try:
         from bs4 import BeautifulSoup
@@ -329,19 +555,17 @@ def fetch_detail(url: str, scraper) -> dict:
         r.raise_for_status()
         soup = BeautifulSoup(r.text, "html.parser")
 
-        # ── Description ──────────────────────────────────────
-        # Verified selector: div.card-body > div > p elements
+        # ── Card body ─────────────────────────────────────────
         body_div = soup.select_one("div.card-body")
         if body_div:
-            paragraphs = body_div.select("p")
-            # Strip ad-injected <ins> content
+            detail["raw_body"] = body_div
+
+            # Plain text for word-count
             for ad in body_div.select("ins, script, .adsbygoogle"):
                 ad.decompose()
-            desc_parts = [p.get_text(" ", strip=True) for p in paragraphs if p.get_text(strip=True)]
-            detail["description"] = "\n\n".join(desc_parts)
+            detail["plain_text"] = body_div.get_text(" ", strip=True)
 
-            # ── Apply URL ──────────────────────────────────────
-            # Last external <a> in card-body (e.g. LinkedIn / Jadara link)
+            # Apply URL — last external link in card-body
             external_links = [
                 a.get("href", "")
                 for a in body_div.select("a[href]")
@@ -351,20 +575,19 @@ def fetch_detail(url: str, scraper) -> dict:
                    and "telegram" not in a.get("href", "")
                    and "twitter" not in a.get("href", "")
                    and "snapchat" not in a.get("href", "")
+                   and "x.com" not in a.get("href", "")
             ]
             if external_links:
                 detail["apply_url"] = external_links[-1]
 
         # ── Category slug ──────────────────────────────────────
-        # Verified selector: small colored bar contains  a[href*='/category/']
         cat_el = soup.select_one("a[href*='/category/']")
         if cat_el:
             href = cat_el.get("href", "")
             slug = href.rstrip("/").split("/")[-1]
             detail["category_slug"] = slug
 
-        # ── Deadline ───────────────────────────────────────────
-        # JSON-LD contains  "validThrough": "YYYY-MM-DD"
+        # ── Deadline (JSON-LD) ─────────────────────────────────
         ld_tag = soup.find("script", type="application/ld+json")
         if ld_tag:
             try:
@@ -375,13 +598,15 @@ def fetch_detail(url: str, scraper) -> dict:
             except Exception:
                 pass
 
-        # ── City text (from full description) ─────────────────
-        detail["city_text"] = detail["description"] + " " + (soup.find("h1") or soup.new_tag("h1")).get_text()
+        # ── City text ─────────────────────────────────────────
+        h1 = soup.find("h1")
+        detail["city_text"] = detail["plain_text"] + " " + (h1.get_text() if h1 else "")
 
     except Exception as e:
         log.warning("Detail fetch failed for %s: %s", url, e)
 
     return detail
+
 
 # ══════════════════════════════════════════════════════════════
 # BUILD SUPABASE JOB PAYLOAD
@@ -390,34 +615,22 @@ def build_payload(listing: dict, detail: dict, logo_b64: str) -> dict:
     """
     Constructs the exact JSON body expected by Supabase /rest/v1/jobs.
     Field names are snake_case as per the DB schema.
-    Mirrors saveJobForm() → jobData object in admin.js  L331-L353.
+    Mirrors saveJobForm() -> jobData object in admin.js  L331-L353.
+    Description is now the approved 6-section structured Markdown template.
     """
     title   = listing["title"].strip()
     company = listing["company"].strip()
 
-    # Category: prefer explicit slug from detail page, fallback to keyword scan
+    # Category
     if detail["category_slug"]:
         cat_id, cat_name = classify_category_from_slug(detail["category_slug"])
     else:
-        cat_id, cat_name = classify_category_from_text(title + " " + detail["description"])
+        cat_id, cat_name = classify_category_from_text(title + " " + detail["plain_text"])
 
     # City
     city_id, city_name = classify_city(detail["city_text"] or title)
 
-    # Description — ensure ≥30 words (AdSense policy)
-    desc = detail["description"].strip()
-    if not desc:
-        desc = title
-    if len(desc.split()) < MIN_DESC_WORDS:
-        desc += (
-            f"\n\nللاطلاع على تفاصيل هذه الوظيفة كاملةً والتقديم عليها، "
-            f"يُرجى زيارة الرابط الأصلي للإعلان. "
-            f"تُعدّ هذه الفرصة في مجال {cat_name} بـ{city_name} من الفرص المميزة "
-            f"التي يُنصح بالإسراع في التقديم عليها قبل انتهاء الموعد المحدد. "
-            f"نتمنى لجميع المتقدمين التوفيق والنجاح في مسيرتهم المهنية."
-        )
-
-    # Deadline — use from detail; if in the past, set None
+    # Deadline
     deadline = detail.get("deadline")
     if deadline:
         try:
@@ -425,6 +638,24 @@ def build_payload(listing: dict, detail: dict, logo_b64: str) -> dict:
                 deadline = None
         except ValueError:
             deadline = None
+
+    # ── Build structured 6-section description ─────────────────
+    desc = format_description(
+        company      = company,
+        raw_html     = detail.get("raw_body"),
+        apply_url    = detail.get("apply_url", "#"),
+        deadline_iso = deadline or "",
+        city_name    = city_name,
+        cat_name     = cat_name,
+    )
+
+    # Ensure minimum word count (AdSense policy)
+    if len(desc.split()) < MIN_DESC_WORDS:
+        desc += (
+            f"\n\nتُعدّ هذه الفرصة في مجال {cat_name} بـ{city_name} من الفرص المميزة "
+            f"التي يُنصح بالإسراع في التقديم عليها. "
+            f"نتمنى لجميع المتقدمين التوفيق والنجاح في مسيرتهم المهنية."
+        )
 
     return {
         "title":         title,
@@ -530,7 +761,7 @@ def fire_push(row: dict) -> None:
 # ══════════════════════════════════════════════════════════════
 def main():
     log.info("━" * 60)
-    log.info("wadifatuk Scraper  v2.0  —  %s UTC", datetime.utcnow().strftime("%Y-%m-%d %H:%M"))
+    log.info("wadifatuk Scraper  v3.0  —  %s UTC", datetime.utcnow().strftime("%Y-%m-%d %H:%M"))
     log.info("━" * 60)
 
     if not SUPABASE_ANON_KEY:
