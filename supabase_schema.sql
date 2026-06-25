@@ -28,6 +28,7 @@ CREATE TABLE IF NOT EXISTS jobs (
   featured      BOOLEAN     DEFAULT false,
   status        TEXT        DEFAULT 'active',
   apply_url     TEXT,
+  source_url    TEXT        UNIQUE,          -- رابط ewdifh الأصلي — مفتاح منع التكرار
   deadline      TEXT,
   posted_date   DATE        DEFAULT CURRENT_DATE,
   views         INTEGER     DEFAULT 0,
@@ -36,6 +37,18 @@ CREATE TABLE IF NOT EXISTS jobs (
 
 -- إضافة حقل title إذا كان الجدول موجوداً مسبقاً
 ALTER TABLE jobs ADD COLUMN IF NOT EXISTS title TEXT;
+
+-- ✅ إضافة source_url للجداول الموجودة مسبقاً (ترحيل)
+ALTER TABLE jobs ADD COLUMN IF NOT EXISTS source_url TEXT;
+-- إضافة UNIQUE constraint إن لم يكن موجوداً
+DO $$ BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint
+    WHERE conname = 'jobs_source_url_key'
+  ) THEN
+    ALTER TABLE jobs ADD CONSTRAINT jobs_source_url_key UNIQUE (source_url);
+  END IF;
+END $$;
 
 -- ── 2. تفعيل Row Level Security ────────────────────────────
 ALTER TABLE jobs ENABLE ROW LEVEL SECURITY;
@@ -72,6 +85,7 @@ CREATE INDEX IF NOT EXISTS idx_jobs_city       ON jobs(city);
 CREATE INDEX IF NOT EXISTS idx_jobs_status     ON jobs(status);
 CREATE INDEX IF NOT EXISTS idx_jobs_created_at ON jobs(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_jobs_featured   ON jobs(featured) WHERE featured = true;
+CREATE INDEX IF NOT EXISTS idx_jobs_source_url ON jobs(source_url) WHERE source_url IS NOT NULL;
 
 -- ── 5. ترحيل الوظائف التجريبية ─────────────────────────────
 -- يُنفَّذ فقط إذا كان الجدول فارغاً

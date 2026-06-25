@@ -290,9 +290,7 @@ function renderAddJobForm(jobData = null) {
   document.getElementById('fStatus').value = f.status || 'active';
   document.getElementById('fEducation').value = f.education || '';
   document.getElementById('fDescription').value = f.description || '';
-  document.getElementById('fRequirements').value = (f.requirements || []).join('\n');
-  document.getElementById('fBenefits').value = (f.benefits || []).join('\n');
-  document.getElementById('fTags').value = (f.tags || []).join('، ');
+
   document.getElementById('fApplyUrl').value = f.applyUrl || '#';
   document.getElementById('fBadge').value = f.badge || '';
   // Deadline: show blank if it's 'حتى الاكتفاء'
@@ -343,9 +341,7 @@ async function saveJobForm() {
     status:        document.getElementById('fStatus').value || 'active',
     education:     document.getElementById('fEducation').value,
     description,
-    requirements: document.getElementById('fRequirements').value.split('\n').filter(Boolean),
-    benefits:      document.getElementById('fBenefits').value.split('\n').filter(Boolean),
-    tags:          document.getElementById('fTags').value.split('،').map(t => t.trim()).filter(Boolean),
+
     apply_url:     document.getElementById('fApplyUrl').value || '#',
     badge:         document.getElementById('fBadge').value || null,
     deadline:      document.getElementById('fDeadline').value || null,

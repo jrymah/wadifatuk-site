@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // ── بناء رابط Supabase الكامل ─────────────────────────────────
-$path     = preg_replace('/[^a-zA-Z0-9_\-]/', '', $_GET['path'] ?? 'jobs');
-// السماح فقط بالجداول المعروفة
-$allowedTables = ['jobs', 'email_subscribers'];
-if (!in_array($path, $allowedTables)) {
+$path     = preg_replace('/[^a-zA-Z0-9_%\/\-]/', '', $_GET['path'] ?? 'jobs');
+// السماح فقط بالمسارات المعروفة
+$allowedPaths = ['jobs', 'email_subscribers', 'rpc/increment_job_views'];
+if (!in_array($path, $allowedPaths)) {
     http_response_code(403);
-    echo json_encode(['error' => 'forbidden', 'message' => 'جدول غير مسموح به'], JSON_UNESCAPED_UNICODE);
+    echo json_encode(['error' => 'forbidden', 'message' => 'مسار غير مسموح به'], JSON_UNESCAPED_UNICODE);
     exit;
 }
 // استثناء 'path' و 't' (timestamp لمنع الكاش — لا يُرسَل لـ Supabase)

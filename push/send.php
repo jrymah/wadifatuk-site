@@ -1,4 +1,5 @@
 <?php
+ob_start(); // ✅ Buffer output — prevents UTF-8 BOM from corrupting JSON response
 /* =========================================================
    send.php — إرسال Push Notification لكل المشتركين
    POST body (JSON):

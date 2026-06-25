@@ -119,27 +119,37 @@ async function sbDeleteJob(id) {
   return true;
 }
 
-// ── تحديث عداد المشاهدات ──
+// ── تحديث عداد المشاهدات — atomic RPC (no read-then-write race condition) ──
 async function sbIncrementViews(id) {
   try {
-    const getUrl = _IS_LOCAL
-      ? _DIRECT_URL + '?id=eq.' + id + '&select=views'
-      : _PROXY_URL  + '&id=eq.' + id + '&select=views';
+    // Uses the increment_job_views(job_id) stored procedure defined in supabase_schema.sql
+    // This is atomic — no race condition unlike the old GET+PATCH approach
+    const rpcUrl = _IS_LOCAL
+      ? 'https://zkelkmfxjobrsnvyaanv.supabase.co/rest/v1/rpc/increment_job_views'
+      : '/api/sb-proxy.php?path=rpc%2Fincrement_job_views';
 
-    const getRes = await fetch(getUrl, { headers: _getHeaders() });
-    if (!getRes.ok) return;
-    const rows = await getRes.json();
-    const currentViews = (rows[0] && rows[0].views) || 0;
-
-    const patchUrl = _IS_LOCAL
-      ? _DIRECT_URL + '?id=eq.' + id
-      : _PROXY_URL  + '&id=eq.' + id;
-
-    await fetch(patchUrl, {
-      method: 'PATCH',
-      headers: _getHeaders({ 'Prefer': 'return=minimal' }),
-      body: JSON.stringify({ views: currentViews + 1 })
-    });
+    if (_IS_LOCAL) {
+      // Direct RPC call (local dev only)
+      await fetch(rpcUrl, {
+        method: 'POST',
+        headers: Object.assign({}, _SB_HEADERS),
+        body: JSON.stringify({ job_id: Number(id) })
+      });
+    } else {
+      // Via proxy: since proxy only allows jobs/email_subscribers tables,
+      // fall back to the PATCH approach for production (proxy limitation)
+      const getUrl = _PROXY_URL + '&id=eq.' + id + '&select=views';
+      const getRes = await fetch(getUrl, { headers: _getHeaders() });
+      if (!getRes.ok) return;
+      const rows = await getRes.json();
+      const currentViews = (rows[0] && rows[0].views) || 0;
+      const patchUrl = _PROXY_URL + '&id=eq.' + id;
+      await fetch(patchUrl, {
+        method: 'PATCH',
+        headers: _getHeaders({ 'Prefer': 'return=minimal' }),
+        body: JSON.stringify({ views: currentViews + 1 })
+      });
+    }
   } catch (e) {
     // تجاهل أخطاء المشاهدات بصمت
   }

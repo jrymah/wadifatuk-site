@@ -1,21 +1,63 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GT5JME726Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-GT5JME726Z');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GT5JME726Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GT5JME726Z');
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تفاصيل الوظيفة - بوست وظيفتك | موقع بوست وظيفتك</title>
+  <title>تفاصيل الوظيفة - بوست وظيفتك | وظائف السعودية</title>
   <meta name="description" content="تعرف على تفاصيل هذه الوظيفة وطريقة التقديم عبر موقع بوست وظيفتك للوظائف في السعودية.">
-  <meta name="keywords" content="بوست وظيفتك, موقع بوست وظيفتك, وظائف السعودية, وظيفة جديدة">
+  <meta name="keywords" content="بوست وظيفتك, وظائف السعودية, وظيفة جديدة, تقديم وظيفة">
+  <link rel="canonical" href="https://www.wadifatuk.com/job-detail.html">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type"        content="article">
+  <meta property="og:site_name"   content="بوست وظيفتك">
+  <meta property="og:locale"      content="ar_SA">
+  <meta property="og:title"       content="تفاصيل الوظيفة - بوست وظيفتك">
+  <meta property="og:description" content="تعرف على تفاصيل هذه الوظيفة وطريقة التقديم عبر موقع بوست وظيفتك.">
+  <meta property="og:url"         content="https://www.wadifatuk.com/job-detail.html">
+  <meta property="og:image"       content="https://www.wadifatuk.com/images/og-default.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary">
+  <meta name="twitter:site"        content="@wadifatuk">
+  <meta name="twitter:title"       content="تفاصيل الوظيفة - بوست وظيفتك">
+  <meta name="twitter:description" content="تعرف على تفاصيل هذه الوظيفة وطريقة التقديم عبر موقع بوست وظيفتك.">
+
+  <!-- JSON-LD: JobPosting structured data (dynamically updated by main.js) -->
+  <script type="application/ld+json" id="jobPostingSchema">
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "وظيفة شاغرة",
+    "description": "تفاصيل الوظيفة متوفرة في الموقع",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "بوست وظيفتك",
+      "sameAs": "https://www.wadifatuk.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "SA"
+      }
+    },
+    "employmentType": "FULL_TIME",
+    "datePosted": "",
+    "validThrough": "",
+    "url": "https://www.wadifatuk.com/job-detail.html"
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="shortcut icon" type="image/svg+xml" href="favicon.svg">
@@ -100,18 +142,50 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script src="js/supabase-config.js"></script>
-<script src="js/data.js?v=5.0"></script>
-  <script src="js/main.js?v=4.0"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/data.js?v=5.0"></script>
+  <script src="js/main.js?v=5.0"></script>
   <script src="js/push-notifications.js" defer></script>
   <script src="js/pwa-install.js" defer></script>
   <script>
-    // Update breadcrumb after job loads
-    setTimeout(() => {
+    // Update breadcrumb + JSON-LD after job loads
+    document.addEventListener('jobsDataReady', function() {
       const params = new URLSearchParams(window.location.search);
       const job = getJobById(params.get('id'));
-      if (job) document.getElementById('breadcrumbTitle').textContent = job.title;
-    }, 100);
+      if (!job) return;
+
+      // Breadcrumb
+      const bc = document.getElementById('breadcrumbTitle');
+      if (bc) bc.textContent = job.title || job.company;
+
+      // JSON-LD structured data — update dynamically
+      const schema = document.getElementById('jobPostingSchema');
+      if (schema) {
+        const plain = (typeof _stripHtml === 'function') ? _stripHtml(job.description || '') : (job.description || '');
+        schema.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "title": job.title || job.company,
+          "description": plain.substring(0, 500),
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": job.company
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": job.cityName || '',
+              "addressCountry": "SA"
+            }
+          },
+          "employmentType": job.type === 'fulltime' ? 'FULL_TIME' : job.type === 'parttime' ? 'PART_TIME' : 'OTHER',
+          "datePosted": job.postedDate || '',
+          "validThrough": job.deadline || '',
+          "url": window.location.href
+        }, null, 2);
+      }
+    });
   </script>
 </body>
 </html>

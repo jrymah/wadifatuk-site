@@ -185,10 +185,11 @@ function renderJobArticle(job) {
 
   const deadlineText = job.deadline ? job.deadline : 'حتى الاكتفاء';
 
-  // وصف مختصر للـ card (أول 200 حرف)
-  const shortDesc = (job.description || '').length > 200
-    ? job.description.substring(0, 200) + '...'
-    : (job.description || '');
+  // وصف مختصر للـ card — strip HTML tags first, then truncate to 200 chars
+  const _plainDesc = _stripHtml(job.description || '');
+  const shortDesc = _plainDesc.length > 200
+    ? _plainDesc.substring(0, 200) + '...'
+    : _plainDesc;
 
   // أول 3 متطلبات
   const reqList = (job.requirements || []).slice(0, 3).map(r => `<li><i class="fas fa-check-circle"></i> ${r}</li>`).join('');
@@ -387,13 +388,19 @@ function applyURLFilters(params) {
   if (document.getElementById('filterSearch') && currentFilters.q)      document.getElementById('filterSearch').value = currentFilters.q;
 }
 
+// ── Strip HTML tags from a string (used for search + card preview) ──
+function _stripHtml(html) {
+  return (html || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
 function filterJobs() {
   let jobs = getJobs();
   if (currentFilters.q) {
     const q = currentFilters.q.toLowerCase();
     jobs = jobs.filter(j =>
+      (j.title   || '').toLowerCase().includes(q) ||
       (j.company || '').toLowerCase().includes(q) ||
-      (j.description || '').toLowerCase().includes(q) ||
+      _stripHtml(j.description || '').toLowerCase().includes(q) ||
       (j.categoryName || '').toLowerCase().includes(q) ||
       (j.cityName || '').toLowerCase().includes(q) ||
       (j.tags || []).some(t => t.toLowerCase().includes(q))
@@ -516,11 +523,21 @@ function renderJobDetail(job) {
   if (!container) return;
   document.title = `${job.company} - بوست وظيفتك | موقع بوست وظيفتك للوظائف`;
   
-  // Update meta description dynamically for SEO if it exists
+  // Update meta description dynamically (strip HTML for plain-text meta)
+  const _jobPlainDesc = _stripHtml(job.description || '');
   let metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc && job.description) {
-    metaDesc.setAttribute("content", (job.description.substring(0, 150) + "... | عبر موقع بوست وظيفتك").replace(/\n/g, ' '));
+  if (metaDesc && _jobPlainDesc) {
+    metaDesc.setAttribute('content', (_jobPlainDesc.substring(0, 150) + '... | عبر موقع بوست وظيفتك').replace(/\s+/g, ' '));
   }
+  // Update Open Graph tags dynamically
+  const _ogTitle = document.querySelector('meta[property="og:title"]');
+  const _ogDesc  = document.querySelector('meta[property="og:description"]');
+  const _ogUrl   = document.querySelector('meta[property="og:url"]');
+  if (_ogTitle) _ogTitle.setAttribute('content', `${job.title || job.company} — بوست وظيفتك`);
+  if (_ogDesc)  _ogDesc.setAttribute('content', _jobPlainDesc.substring(0, 160));
+  if (_ogUrl)   _ogUrl.setAttribute('content', window.location.href);
+  // Update page title with job name
+  document.title = `${job.title || job.company} - بوست وظيفتك | وظائف السعودية`;
   const cat = getCategoryById(job.category);
   const logoHtml = job.logo && (job.logo.startsWith('data:') || job.logo.startsWith('http'))
     ? `<img src="${job.logo}" alt="${job.company}" style="width:100%;height:100%;object-fit:contain;padding:6px;">`
@@ -546,13 +563,8 @@ function renderJobDetail(job) {
         </div>
       </div>
       <div class="job-detail-section-title">وصف الوظيفة</div>
-      <div class="job-detail-content"><p>${job.description}</p></div>
-      <div class="job-detail-section-title">المتطلبات</div>
-      <div class="job-detail-content"><ul>${(job.requirements || []).map(r => `<li>${r}</li>`).join('')}</ul></div>
-      <div class="job-detail-section-title">المزايا والبدلات</div>
-      <div class="job-detail-content"><ul>${(job.benefits || []).map(b => `<li>${b}</li>`).join('')}</ul></div>
-      <div class="job-detail-section-title">الكلمات المفتاحية</div>
-      <div class="job-tags" style="margin-top:10px">${(job.tags || []).map(t => `<span class="job-tag" style="background:${cat?.color||'#f1f5f9'};color:${cat?.iconColor||'#475569'}">${t}</span>`).join('')}</div>
+      <div class="job-detail-content job-description-html" id="jobDescriptionContent"></div>
+
     </div>
     <div class="job-apply-sidebar">
       <button class="apply-big-btn" onclick="goApply('${job.applyUrl}', '${job.company}')"><i class="fas fa-paper-plane"></i> تقدم الآن</button>
@@ -570,6 +582,12 @@ function renderJobDetail(job) {
         <div class="sidebar-detail-item"><div class="sidebar-detail-icon"><i class="fas fa-eye"></i></div><div><div class="sidebar-detail-label">المشاهدات</div><div class="sidebar-detail-value">${(job.views || 0).toLocaleString('ar')}</div></div></div>
       </div>
     </div>`;
+
+  // ✅ Inject description as HTML AFTER container is in the DOM
+  const descEl = document.getElementById('jobDescriptionContent');
+  if (descEl) {
+    descEl.innerHTML = job.description || '<p>(لم يتوفر وصف)</p>';
+  }
 }
 
 function renderRelatedJobs(job) {
