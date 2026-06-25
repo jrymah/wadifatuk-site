@@ -1,9 +1,11 @@
+name: 🕷️ Scrape ewdifh.com → wadifatuk.com
+
 # ═══════════════════════════════════════════════════════════════
-# wadifatuk.com — Automated Job Scraper
+# wadifatuk.com — Automated Job Scraper v4.0
 # Source : https://www.ewdifh.com/
 # Target : Supabase  jobs  table  +  push/send.php
 #
-# Schedule  : every 3 hours (UTC)
+# Schedule  : twice daily — 06:00 & 18:00 UTC (09:00 & 21:00 Riyadh)
 # Trigger   : also supports manual run from GitHub Actions UI
 #
 # GitHub Secrets required (Settings → Secrets → Actions):
@@ -11,11 +13,11 @@
 #   SUPABASE_ANON_KEY  → eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 #   SITE_URL           → https://www.wadifatuk.com
 # ═══════════════════════════════════════════════════════════════
-name: 🕷️ Scrape ewdifh.com → wadifatuk.com
 
 on:
   schedule:
-    - cron: "0 */3 * * *"   # Every 3 hours (free tier, no cost)
+    - cron: "0 6 * * *"    # 06:00 UTC = 09:00 توقيت الرياض
+    - cron: "0 18 * * *"   # 18:00 UTC = 21:00 توقيت الرياض
 
   workflow_dispatch:
     inputs:
@@ -28,7 +30,7 @@ on:
         required: false
         default: "false"
 
-# Prevent overlapping runs
+# Prevent overlapping runs — queue next, don't cancel current
 concurrency:
   group: scraper-singleton
   cancel-in-progress: false
@@ -61,12 +63,18 @@ jobs:
       - name: 📦 Install dependencies
         run: pip install --upgrade pip && pip install -r scraper/requirements.txt
 
-      # ── 4. Restore seen_jobs cache (speed up cold starts) ──────────────
+      # ── 4. Restore seen_jobs cache ─────────────────────────────────────
+      # FIX: key uses branch name (not run_id) so cache always restores
+      # between runs on the same branch. run_id was causing cold starts.
       - name: 💾 Restore dedup cache
         uses: actions/cache@v4
         with:
           path: scraper/seen_jobs.json
-          key: seen-jobs-v2-${{ runner.os }}
+          key: seen-jobs-v4-${{ runner.os }}-${{ github.ref_name }}-${{ hashFiles('scraper/seen_jobs.json') }}
+          restore-keys: |
+            seen-jobs-v4-${{ runner.os }}-${{ github.ref_name }}-
+            seen-jobs-v4-${{ runner.os }}-
+            seen-jobs-v3-${{ runner.os }}-
 
       # ── 5. Run scraper ─────────────────────────────────────────────────
       - name: 🕷️ Run scraper
@@ -97,8 +105,8 @@ jobs:
         run: head -n 300 scraper/debug_ewdifh.html 2>/dev/null || echo "(no debug HTML)"
 
       # ── 8. Commit seen_jobs.json back to repo ──────────────────────────
-      #    This is the primary persistence layer for deduplication.
-      #    The bot only commits when the file actually changed.
+      #    Primary persistence layer for deduplication.
+      #    Only commits when the file actually changed.
       - name: 💾 Persist seen_jobs.json
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
