@@ -150,6 +150,7 @@
     "817a872208d99a50",
     "8191a009345ba10f",
     "81f6ce4e8680534d",
+    "825019a9c70a1ce1",
     "825852f454a49bc8",
     "83839a8c3b18ed4c",
     "84bdf7fdc4020e37",
@@ -194,6 +195,7 @@
     "9ff9687420468a5b",
     "a062607790f99187",
     "a1a85557cd889472",
+    "a291a4aaa5502a39",
     "a446b08163b38eaf",
     "a52ec696f94d953f",
     "a56c38cb3b21b763",
@@ -250,6 +252,7 @@
     "ch_0c97c2764902",
     "ch_0d539bfc0503",
     "ch_0e101e892b68",
+    "ch_0ecbae1cc6d7",
     "ch_10b5f67a80c2",
     "ch_10d37d7fa466",
     "ch_13b915d4fa86",
@@ -343,6 +346,7 @@
     "ch_bc11f0b0b20e",
     "ch_bdca3f7e6db5",
     "ch_c153a57dd06c",
+    "ch_c31d28b8e619",
     "ch_c324022d096f",
     "ch_c5c9eec37286",
     "ch_c7db16826546",
@@ -411,6 +415,7 @@
     "f18c4dd87d8a9df1",
     "f39435ace016930e",
     "f4cdc853661f8b8a",
+    "f4fbc110f2c3c5b1",
     "f5860fa4943c4466",
     "f6ddf6e07f486143",
     "f81ba6e24143790e",
@@ -471,6 +476,7 @@
     "https://docs.google.com/forms/d/e/1FAIpQLSeNIPCyAawiTbv_JSKs8VfC8o6N5kO0M4isPCO1kmap5ZHwSg/viewform?usp=send_form",
     "https://docs.google.com/forms/d/e/1FAIpQLSet9up8PU1K0piadSBmBytmJuNavFZ4lEkPvpyVIC3fidUlig/viewform",
     "https://docs.google.com/forms/d/e/1FAIpQLSewMmCKSopItIjxOjwDxMvlckNHxf2Krsq37HT-AUHp5nt-Ug/formResponse",
+    "https://docs.google.com/forms/d/e/1FAIpQLSfuD_9XJKXOHijjV0Kb9Bu7I406xSNeyxXhJOLtU3SAd-trXw/viewform",
     "https://dps.kku.edu.sa/ar/node/1214",
     "https://e-services.etec.gov.sa/Qiyas.TRAS.Web.Internet/",
     "https://edugate.rcjy.edu.sa/jyup/unifiedAdmission",
@@ -711,6 +717,8 @@
     "https://www.ewdifh.com/jobs/85692",
     "https://www.ewdifh.com/jobs/85693",
     "https://www.ewdifh.com/jobs/85694",
+    "https://www.ewdifh.com/jobs/85702",
+    "https://www.ewdifh.com/jobs/85703",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/apply/",
     "https://www.ipa.edu.sa/ar/training/#/courses/detail/491?version-code=1",
@@ -746,5 +754,5 @@
     "https://www.swa.gov.sa/ar/services/request-service/request-coop-training-program",
     "https://www.uap.sa"
   ],
-  "updated_at": "2026-07-24T19:35:35.357146"
+  "updated_at": "2026-07-25T08:03:32.113590"
 }
