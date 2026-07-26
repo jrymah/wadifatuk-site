@@ -53,6 +53,7 @@
     "2119d4f9fee14850",
     "222453cdc0ab9f68",
     "24f1ec9844da33d1",
+    "27446ff7842221b5",
     "27d9a52df2205c27",
     "297d072e3258f999",
     "2ab4e1352586b9ff",
@@ -140,6 +141,7 @@
     "751e1717bf017c38",
     "758b97056a26b919",
     "76464f5ccd0e5536",
+    "76cba9a72c50da8a",
     "77cc3df82c22dfae",
     "7aab5c50217a5cb5",
     "7c79f593fe23ccbd",
@@ -218,6 +220,7 @@
     "b1bbee0528d4858f",
     "b3918499ae499b13",
     "b3c2fedcb5cf34c5",
+    "b4083a7f207ac8fa",
     "b4361227231de290",
     "b50b8ed5413faed1",
     "b5e9019406a8ebab",
@@ -383,8 +386,10 @@
     "ch_f477af855d8b",
     "ch_f47db1b5c30c",
     "ch_fd4de5e85f42",
+    "ch_ff8ea7bd3b5b",
     "ch_ff95825f5e6e",
     "d10dd79049a3c5ee",
+    "d123d09d717c4dda",
     "d41f22e0d03233f4",
     "d4cf4c132dddc837",
     "d5d1a768535abb52",
@@ -538,6 +543,7 @@
     "https://registration.qu.edu.sa/",
     "https://registration.ub.edu.sa/bisha/ui/guest/application_online/index/typeHighApplicationOnlineIndex.faces",
     "https://riyadah.com.sa/ecoursereg.aspx?c=2262712100169",
+    "https://riyadah.com.sa/ecoursereg.aspx?c=2262712100172",
     "https://riyadah.com.sa/ecoursereg.aspx?c=2262727100163",
     "https://rpi.sa/register/ELM/BATCH037-ELM?lang=ar",
     "https://rpi.sa/register/ELT/BATCH003-ELT",
@@ -732,6 +738,7 @@
     "https://www.ewdifh.com/jobs/85704",
     "https://www.ewdifh.com/jobs/85705",
     "https://www.ewdifh.com/jobs/85706",
+    "https://www.ewdifh.com/jobs/85707",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/apply/",
     "https://www.ipa.edu.sa/ar/training/#/courses/detail/491?version-code=1",
@@ -767,5 +774,5 @@
     "https://www.swa.gov.sa/ar/services/request-service/request-coop-training-program",
     "https://www.uap.sa"
   ],
-  "updated_at": "2026-07-25T19:14:30.905913"
+  "updated_at": "2026-07-26T08:23:24.013442"
 }
