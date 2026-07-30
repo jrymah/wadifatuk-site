@@ -62,6 +62,7 @@
     "24f1ec9844da33d1",
     "27446ff7842221b5",
     "27d9a52df2205c27",
+    "28f5f267e5f37fa6",
     "297d072e3258f999",
     "2ab4e1352586b9ff",
     "2b3bbb227d9070bd",
@@ -225,6 +226,7 @@
     "a291a4aaa5502a39",
     "a31c4510ddfdd1ba",
     "a35af0cab9995f08",
+    "a3d5e94459f30963",
     "a446b08163b38eaf",
     "a52ec696f94d953f",
     "a56c38cb3b21b763",
@@ -441,10 +443,12 @@
     "ch_f47db1b5c30c",
     "ch_f8357ec1efbb",
     "ch_fd4de5e85f42",
+    "ch_fe06dbf67057",
     "ch_ff8ea7bd3b5b",
     "ch_ff95825f5e6e",
     "d10dd79049a3c5ee",
     "d123d09d717c4dda",
+    "d1f2e264113e0d85",
     "d2700a1e4e6517e6",
     "d41f22e0d03233f4",
     "d4cf4c132dddc837",
@@ -840,6 +844,7 @@
     "https://www.ewdifh.com/jobs/85735",
     "https://www.ewdifh.com/jobs/85736",
     "https://www.ewdifh.com/jobs/85737",
+    "https://www.ewdifh.com/jobs/85738",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/apply/",
     "https://www.ipa.edu.sa/ar/training/#/courses/detail/491?version-code=1",
@@ -881,5 +886,5 @@
     "https://www.swa.gov.sa/ar/services/request-service/request-coop-training-program",
     "https://www.uap.sa"
   ],
-  "updated_at": "2026-07-29T19:23:19.099207"
+  "updated_at": "2026-07-30T08:22:50.244502"
 }
