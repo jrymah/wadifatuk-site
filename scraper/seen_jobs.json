@@ -35,6 +35,7 @@
     "0d656e371d52bf43",
     "0dd54c517ce3357a",
     "0f3ce4fdbd13ffa0",
+    "0f7065903292f9f8",
     "0f88a78210f9d71c",
     "1057cfaa1f393446",
     "10a2ddec7860fffa",
@@ -629,6 +630,7 @@
     "ch_a137a4266d82",
     "ch_a26db098f867",
     "ch_a2f74e660a90",
+    "ch_a398f7111b50",
     "ch_a3a21f8dd538",
     "ch_a3eb6879bf63",
     "ch_a411322f2140",
@@ -979,6 +981,7 @@
     "https://jobs.taibahu.edu.sa/Account/index",
     "https://jobs.tasnee.com/search/?createNewAlert=false&q=&locationsearch=SA&optionsFacetsDD_customfield1=",
     "https://jobs.tu.edu.sa/Identity/Account/Login?ReturnUrl=%2F",
+    "https://jobs.tu.edu.sa/Identity/Account/Login?ReturnUrl=%2FDashboard",
     "https://jobse.gulf.edu.sa/",
     "https://kau.edu.sa/u/47lfG",
     "https://kkmar.sang.gov.sa/",
@@ -1410,6 +1413,7 @@
     "https://www.ewdifh.com/jobs/85913",
     "https://www.ewdifh.com/jobs/85917",
     "https://www.ewdifh.com/jobs/85918",
+    "https://www.ewdifh.com/jobs/85924",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/",
@@ -1488,5 +1492,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-08-26T19:52:21.795139"
+  "updated_at": "2026-08-27T17:19:25.436370"
 }
