@@ -498,6 +498,7 @@
     "cbfd4d152736fe3c",
     "cc58db042278b9e9",
     "cce460b32623d4ba",
+    "cd4fe285d74b46be",
     "cdb9110241d3ffed",
     "cdda220d8fb87d39",
     "ce538621f284284b",
@@ -577,6 +578,7 @@
     "ch_3b7fea5f7880",
     "ch_3c3599d0ec2b",
     "ch_3c4bbc47e553",
+    "ch_3c91d5a6cd71",
     "ch_3dac758dfb1e",
     "ch_3e0f1956ad75",
     "ch_3f7e7bac31f1",
@@ -807,6 +809,7 @@
     "d2700a1e4e6517e6",
     "d34d2d735cd16720",
     "d40b0c33f46a111b",
+    "d40cecbdbd907568",
     "d41f22e0d03233f4",
     "d4cf4c132dddc837",
     "d5d1a768535abb52",
@@ -814,6 +817,7 @@
     "d60e6d866892690f",
     "d6c4dc0f2cef8167",
     "d7592c774ccb4b62",
+    "d7ffe84308ba7019",
     "d828244e1e35a0e9",
     "d84904324fcc45f3",
     "d88026bd609c5f2b",
@@ -1000,6 +1004,7 @@
     "https://edugate.rcjy.edu.sa/jyup/ui/guest/application_online/index/bridgeHomeIndex.faces",
     "https://edugate.rcjy.edu.sa/jyup/unifiedAdmission",
     "https://efan.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/2569/?utm_medium=jobshare&utm_source=External+Job+Share",
+    "https://efan.fa.em3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs",
     "https://elweb.iau.edu.sa/dlportal/programs",
     "https://erpweb.kfshrc.edu.sa/OA_HTML/IrcVisitor.jsp",
     "https://eservices.alharamain.gov.sa/esrv/studentApplicant",
@@ -1524,6 +1529,7 @@
     "https://www.ewdifh.com/jobs/85958",
     "https://www.ewdifh.com/jobs/85959",
     "https://www.ewdifh.com/jobs/85960",
+    "https://www.ewdifh.com/jobs/85961",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/",
@@ -1608,5 +1614,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-09-04T10:35:51.310507"
+  "updated_at": "2026-09-04T20:32:37.133463"
 }
