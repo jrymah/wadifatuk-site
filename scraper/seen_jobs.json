@@ -85,6 +85,7 @@
     "1b30933dbe03bdbd",
     "1b69210467539c7c",
     "1b8908d58f79d1e4",
+    "1bd4693e76a3dbb6",
     "1d22cc63a9115d60",
     "1d5598cd4f389580",
     "1dcc5721ea6f1382",
@@ -246,6 +247,7 @@
     "5348e1c1417630a5",
     "5406fa410de4c4d6",
     "541a03d5128d0c66",
+    "547c96b740e20910",
     "563cd4cd97842a05",
     "56aa1f7b14ed99d4",
     "56f3e32ac1d68bfc",
@@ -539,6 +541,7 @@
     "ce538621f284284b",
     "cf5fb33f72e661cd",
     "cfe31d25829bb124",
+    "ch_00dc9dc42777",
     "ch_026164818f5e",
     "ch_031fc77ead76",
     "ch_03f3bc5a9033",
@@ -889,6 +892,7 @@
     "d9f3e4cee3caecb4",
     "daa98827c93b5db1",
     "db3790aa92b6314a",
+    "db6a293068eaba9e",
     "db92f70afc65b548",
     "dbe55a292cf1798e",
     "dc5d04a9a28ec0c7",
@@ -1141,6 +1145,7 @@
     "https://kkmar.sang.gov.sa/FrmNewsDetails.aspx?id=4",
     "https://kkmar.sang.gov.sa/FrmNewsDetails.aspx?id=5",
     "https://kkux.kku.edu.sa/soudah_kku_program/",
+    "https://learn.seu.edu.sa/diplomas/partner/al-baha-university",
     "https://lik.ad/1jt5q",
     "https://lik.ad/m09hz",
     "https://lms.doroob.sa//courses/Doroob/SC-STC-P2-W5/2030/about",
@@ -1646,6 +1651,8 @@
     "https://www.ewdifh.com/jobs/86001",
     "https://www.ewdifh.com/jobs/86002",
     "https://www.ewdifh.com/jobs/86003",
+    "https://www.ewdifh.com/jobs/86004",
+    "https://www.ewdifh.com/jobs/86005",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/",
@@ -1743,5 +1750,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-09-10T20:39:10.161033"
+  "updated_at": "2026-09-11T10:36:52.827296"
 }
