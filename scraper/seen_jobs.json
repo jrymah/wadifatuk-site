@@ -330,6 +330,7 @@
     "7261103a63dfb594",
     "72d50f845dda547e",
     "7326ed534cfe9044",
+    "733f54f3b7eab91a",
     "73d57ac4bfcebb8d",
     "74544285a6b52d9f",
     "7505e4ab3f5d5328",
@@ -749,6 +750,7 @@
     "ch_912e8b2b95b7",
     "ch_936bc186f37d",
     "ch_93d45699542c",
+    "ch_960fccf94f28",
     "ch_97154cff35b3",
     "ch_97c4775974ba",
     "ch_98d01610ce3f",
@@ -940,6 +942,7 @@
     "e424d2a98838254e",
     "e4c78d90b3d38585",
     "e5001e15090227be",
+    "e5917da449fc4eb4",
     "e5c920c43be415c2",
     "e690666bcc2dcc82",
     "e7ee29aa52634764",
@@ -1003,6 +1006,7 @@
     "ff465ae72925b2d3",
     "ff4d61b7286a26af",
     "ff9ec6dcd27af7f4",
+    "ffddd3d26fb6e873",
     "http://cda.org.sa/pages/11",
     "http://htmisa.com/ar/application/",
     "http://jobs.dominos.sa",
@@ -1071,6 +1075,7 @@
     "https://careers.petrorabigh.com/jobs",
     "https://careers.rer.sa/ar/public/jobs",
     "https://careers.sadafco.com/ar/job-search-results/",
+    "https://careers.sadafco.com/ar/job-search-results/?keyword=",
     "https://careers.saib.com.sa/ar/saudi-arabia/jobs/sgdp-2026-2027-1100087653/",
     "https://careers.saib.com.sa/en/saudi-arabia/jobs/sgdp-2026-2027-1100088452/",
     "https://careers.sans.com.sa/#en/sites/CX_1/job/1912/?utm_medium=jobshare&utm_source=External+Job+Share",
@@ -1699,6 +1704,8 @@
     "https://www.ewdifh.com/jobs/86018",
     "https://www.ewdifh.com/jobs/86019",
     "https://www.ewdifh.com/jobs/86020",
+    "https://www.ewdifh.com/jobs/86021",
+    "https://www.ewdifh.com/jobs/86022",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/",
@@ -1801,5 +1808,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-09-14T21:40:00.036213"
+  "updated_at": "2026-09-15T11:04:26.284428"
 }
