@@ -567,6 +567,7 @@
     "c496f0e845b8986a",
     "c4acb7f3b468c475",
     "c4e8a51e32ceea72",
+    "c58ad3232c7db0dd",
     "c58b76b7e39e312a",
     "c58c95c3af8cd65f",
     "c597d6994c602446",
@@ -845,7 +846,6 @@
     "ch_b084d93e98c2",
     "ch_b0ac5cdb3d0b",
     "ch_b0b69b694d2b",
-    "ch_b12de8a2d38b",
     "ch_b2fcf363e7fc",
     "ch_b4ef609eb6fe",
     "ch_b4f47e0edfdf",
@@ -954,6 +954,7 @@
     "ch_fdc5df47ed9a",
     "ch_fe06dbf67057",
     "ch_fe568c2ed424",
+    "ch_ff0bf985bfe7",
     "ch_ff8ea7bd3b5b",
     "ch_ff95825f5e6e",
     "d012413b7e09851d",
@@ -1042,6 +1043,7 @@
     "ee3460cb7f3077ab",
     "ef8912da392561a0",
     "efd29867c3610ded",
+    "f0132ed51ff1a1c9",
     "f0d1037b39a6a93b",
     "f18c4dd87d8a9df1",
     "f21f48f65940d5e2",
@@ -1131,6 +1133,7 @@
     "https://careers.alrashed.com/ar/job-search-results/",
     "https://careers.alrashed.com/ar/job-search-results/?trigger=jb_loc_list&jb_loc_list=sa&page=1",
     "https://careers.catrion.com/ar/job-search-results",
+    "https://careers.catrion.com/ar/job-search-results/?keyword=&jb_role=",
     "https://careers.cma.gov.sa/ar/saudi-arabia/jobs/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%88%D9%86%D9%8A-%D9%84%D9%84%D9%81%D8%B5%D9%84-%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A-%D8%A7%D9%84%D8%A3%D9%88%D9%84-2026%D9%85-1100087033/",
     "https://careers.coe.com.sa/ar/job-search-results/",
     "https://careers.cyberani.sa/jobs",
@@ -1836,6 +1839,7 @@
     "https://www.ewdifh.com/jobs/86062",
     "https://www.ewdifh.com/jobs/86063",
     "https://www.ewdifh.com/jobs/86065",
+    "https://www.ewdifh.com/jobs/86066",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/",
@@ -1945,5 +1949,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-09-23T21:18:24.483951"
+  "updated_at": "2026-09-24T11:07:34.282702"
 }
