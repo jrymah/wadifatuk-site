@@ -39,6 +39,7 @@
     "0b20ad36da7817a7",
     "0bee1d68a555b3f8",
     "0c22af96697aa780",
+    "0c61dc3daf01f36c",
     "0ce0cdc2200fb15c",
     "0cf9bd155f068894",
     "0cff246d34de99f9",
@@ -281,6 +282,7 @@
     "541a03d5128d0c66",
     "547c96b740e20910",
     "549d604dcc404ea4",
+    "54cb5a00d8e230a5",
     "563cd4cd97842a05",
     "56aa1f7b14ed99d4",
     "56f3e32ac1d68bfc",
@@ -543,6 +545,7 @@
     "b50b8ed5413faed1",
     "b51ffb2dcc040fb8",
     "b58807741a825819",
+    "b597fb7c718a3914",
     "b5e9019406a8ebab",
     "b6366427c893148c",
     "b688edb125cc4ea2",
@@ -840,6 +843,7 @@
     "ch_a3eb6879bf63",
     "ch_a411322f2140",
     "ch_a44112d910fb",
+    "ch_a50a204b3a46",
     "ch_a896e1fa6ccb",
     "ch_a91c4341c85a",
     "ch_a96a7318edf7",
@@ -1021,6 +1025,7 @@
     "e232d0054ad35750",
     "e2aa4cab3710d47a",
     "e2ef1c9438e37f39",
+    "e38886e617a90a5c",
     "e3a2a7e15f73a11d",
     "e3c272be57cdc8dc",
     "e41294262295e6f2",
@@ -1149,6 +1154,7 @@
     "https://careers.alrashed.com/ar/job-search-results/?trigger=jb_loc_list&jb_loc_list=sa&page=1",
     "https://careers.catrion.com/ar/job-search-results",
     "https://careers.catrion.com/ar/job-search-results/?keyword=&jb_role=",
+    "https://careers.chi.gov.sa/ar/saudi-arabia/jobs/%D8%A3%D8%AE%D8%B5%D8%A7%D8%A6%D9%8A-%D8%B1%D8%B5%D8%AF-%D9%88%D8%AA%D9%81%D8%AA%D9%8A%D8%B4-1100090602/",
     "https://careers.cma.gov.sa/ar/saudi-arabia/jobs/%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%88%D9%86%D9%8A-%D9%84%D9%84%D9%81%D8%B5%D9%84-%D8%A7%D9%84%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A-%D8%A7%D9%84%D8%A3%D9%88%D9%84-2026%D9%85-1100087033/",
     "https://careers.coe.com.sa/ar/job-search-results/",
     "https://careers.cyberani.sa/jobs",
@@ -1867,6 +1873,8 @@
     "https://www.ewdifh.com/jobs/86073",
     "https://www.ewdifh.com/jobs/86074",
     "https://www.ewdifh.com/jobs/86075",
+    "https://www.ewdifh.com/jobs/86076",
+    "https://www.ewdifh.com/jobs/86077",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/graduate-development/",
@@ -1978,5 +1986,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-09-27T11:24:40.006473"
+  "updated_at": "2026-09-27T21:07:46.979493"
 }
