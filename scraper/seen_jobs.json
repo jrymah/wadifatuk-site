@@ -185,6 +185,7 @@
     "34a0b938e344f6aa",
     "350b5baaf4f92347",
     "35babd3eadbee6d8",
+    "35c3442a91141cb0",
     "36784cfd312f69a4",
     "374a7b56bed51b88",
     "376e96cd5a726670",
@@ -266,6 +267,7 @@
     "4c228562edf76feb",
     "4d06ce227cf6d123",
     "4d26b3e07fad2086",
+    "4d5442f315f3fe45",
     "4e4a65e40459f3ec",
     "4eddb796a0e4b4c5",
     "4ee80734cd689827",
@@ -891,6 +893,7 @@
     "ch_b4f5a2ea0779",
     "ch_b56dc158d095",
     "ch_b5c364d2da28",
+    "ch_b70dd3339062",
     "ch_b7858b415a9b",
     "ch_b7bc071bcc1d",
     "ch_b7f601cf4f47",
@@ -942,6 +945,7 @@
     "ch_d4a3ec9fe6c3",
     "ch_d7784db13152",
     "ch_d82c99610886",
+    "ch_d83dcd14f67f",
     "ch_d8488e3d5675",
     "ch_d8e307b8c78c",
     "ch_d96fc9cefcba",
@@ -1275,6 +1279,7 @@
     "https://forms.brj.com.sa/CJSMarketing/form/SRAJobFair/formperma/zW4oIA82TJ3dWLmOKYkS-WefhMq0WltiWJDnhpbfFVc?zf_pf_id=835981",
     "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=tuyUOFpe0UeUIlIBBDzEE5GbtPYlcndCtvjej73rQilUQUxBSUlFRktDUkUxVlVQU0RHR1dUMklIMS4u&origin=QRCode",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=2XVxvk3NVUy63HTv2-CYq5L3EZ3yCcBHpKbsheZj-RBUQkxWSjYyQ1VNWlJHSTBMVDNDVk8yR1JQMSQlQCNjPTEu&route=shorturl",
+    "https://forms.cloud.microsoft/pages/responsepage.aspx?id=S6tr4uaXVEexY2D4I36FMT_IEAmXqXBOqtlrw3kIoVBUMVVVVUYzVEwyNDA5WVlST1lCNjc3U0Y0OC4u&route=shorturl",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=XraasGOQYkivotdatIu6dP-1mUeSANNPju9zlZsBnjpUMDIyTkRJQUZDOUxVTThJRVQ3MENKT0ZTSS4u&OR=EXCEL-WEB.BODY.NT&CT=1787574360951&route=shorturl",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=pZTPBRjQS0mZUCsBPXF6qKPwATVgTtlAvrQT4YBLncFUQTVTR1hGT0RYMFNKUlo4SjQzQjREVEtKRyQlQCN0PWcu&route=shorturl",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=t2SN3tp5mEGAwnuENDSDT93alKF08HxNkG3wq11UFHdUNlEyRjBJQkY4R1NOUjVRTUlJOUZVOUU0OC4u&origin=QRCode&route=shorturl",
@@ -1314,6 +1319,7 @@
     "https://jobs.apple.com/ar-sa/details/200598708/sa-specialist-saudi-and-gcc-nationals?team=APPST",
     "https://jobs.apple.com/ar-sa/search?location=saudi-arabia-SAU",
     "https://jobs.company.thmanyah.com/",
+    "https://jobs.mod.gov.sa",
     "https://jobs.othaimmarkets.com",
     "https://jobs.sa",
     "https://jobs.sa/",
@@ -1923,6 +1929,8 @@
     "https://www.ewdifh.com/jobs/86088",
     "https://www.ewdifh.com/jobs/86090",
     "https://www.ewdifh.com/jobs/86091",
+    "https://www.ewdifh.com/jobs/86092",
+    "https://www.ewdifh.com/jobs/86093",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2042,5 +2050,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-09-30T11:55:40.107669"
+  "updated_at": "2026-09-30T22:02:24.682932"
 }
