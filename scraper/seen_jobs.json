@@ -626,6 +626,7 @@
     "cdb9110241d3ffed",
     "cdda220d8fb87d39",
     "cde9e7cde81014c2",
+    "ce083e081d1d30de",
     "ce3336b214326381",
     "ce538621f284284b",
     "cf5fb33f72e661cd",
@@ -650,6 +651,7 @@
     "ch_0c97c2764902",
     "ch_0d539bfc0503",
     "ch_0e101e892b68",
+    "ch_0e19f47eb4af",
     "ch_0e3d8e1ae1c5",
     "ch_0e5818cc4187",
     "ch_0ecbae1cc6d7",
@@ -1403,6 +1405,7 @@
     "https://riyadah.com.sa/ecoursereg.aspx?c=2262757100181",
     "https://rpi.sa/register/ELM/BATCH037-ELM?lang=ar",
     "https://rpi.sa/register/ELT/BATCH003-ELT",
+    "https://sa.zain.com/ar/ibm",
     "https://safeer2.moe.gov.sa/Portal/",
     "https://saia.gov.sa/ar/pages/62",
     "https://saia.gov.sa/ar/pages/artificial-intelligence-for-business",
@@ -1940,6 +1943,7 @@
     "https://www.ewdifh.com/jobs/86093",
     "https://www.ewdifh.com/jobs/86094",
     "https://www.ewdifh.com/jobs/86097",
+    "https://www.ewdifh.com/jobs/86099",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2059,5 +2063,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-10-01T12:26:44.440929"
+  "updated_at": "2026-10-02T21:59:28.674056"
 }
