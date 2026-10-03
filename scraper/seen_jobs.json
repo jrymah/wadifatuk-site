@@ -406,6 +406,7 @@
     "7d82ae2849877635",
     "7dae18b9083e2a0f",
     "7ecdf20ba6eca8be",
+    "7f6963215a03ccf5",
     "7fb89b863c6698c3",
     "8035f1ef1157ece2",
     "80439aca3a59460e",
@@ -651,7 +652,6 @@
     "ch_0c97c2764902",
     "ch_0d539bfc0503",
     "ch_0e101e892b68",
-    "ch_0e19f47eb4af",
     "ch_0e3d8e1ae1c5",
     "ch_0e5818cc4187",
     "ch_0ecbae1cc6d7",
@@ -874,6 +874,7 @@
     "ch_a411322f2140",
     "ch_a44112d910fb",
     "ch_a50a204b3a46",
+    "ch_a669aebd49aa",
     "ch_a6c27090479a",
     "ch_a896e1fa6ccb",
     "ch_a91c4341c85a",
@@ -1100,6 +1101,7 @@
     "ed62b05ac4fe1edf",
     "ee3460cb7f3077ab",
     "ef1e21d6bdfdea1d",
+    "ef3ed5b6f4d12717",
     "ef8912da392561a0",
     "efd29867c3610ded",
     "f0132ed51ff1a1c9",
@@ -1944,6 +1946,7 @@
     "https://www.ewdifh.com/jobs/86094",
     "https://www.ewdifh.com/jobs/86097",
     "https://www.ewdifh.com/jobs/86099",
+    "https://www.ewdifh.com/jobs/86100",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2002,6 +2005,7 @@
     "https://www.linkedin.com/jobs/search-results/?currentJobId=4470820081&keywords=jobs&origin=JOB_SEARCH_PAGE_LOCATION_AUTOCOMPLETE&geoId=100459316&f_C=5335496%2C17866%2C2601627%2C90863972%2C112275167%2C262923%2C65632550%2C5000659",
     "https://www.linkedin.com/jobs/search-results/?currentJobId=4470824895&keywords=jobs&origin=JOB_SEARCH_PAGE_JOB_FILTER&referralSearchId=%2F8rMBS%2F6YQ4Fkw6yEKGMxQ%3D%3D&geoId=100459316&f_C=3543358%2C3543359%2C246238%2C3541743%2C3542531%2C3543360%2C3543362%2C3541746%2C3541745",
     "https://www.linkedin.com/jobs/search-results/?currentJobId=4470872405&keywords=jobs&origin=COMPANY_PAGE_JOBS_CLUSTER_EXPANSION&originToLandingJobPostings=4470872405%2C4470876163%2C4470844581&geoId=100459316&f_C=104884555",
+    "https://www.linkedin.com/jobs/search-results/?currentJobId=4474104795&keywords=jobs&origin=COMPANY_PAGE_JOBS_CLUSTER_EXPANSION&originToLandingJobPostings=4474104795%2C4473951578%2C4473952580%2C4473956451%2C4473957442%2C4461260962%2C4461261906%2C4461281651%2C4461276742%2C4461275710&geoId=100459316&f_C=13388024",
     "https://www.linkedin.com/jobs/search/?currentJobId=4399975502&f_C=1674600&geoId=100459316&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true",
     "https://www.linkedin.com/jobs/search/?currentJobId=4425173892&f_C=706420&geoId=92000000&origin=COMPANY_PAGE_JOBS_CLUSTER_EXPANSION&originToLandingJobPostings=4425173892%2C4429241073%2C4421607252%2C4431393273%2C4431692703%2C4429251069%2C4431671739%2C4431634880%2C4431662861",
     "https://www.linkedin.com/jobs/search/?currentJobId=4429856776&f_C=2752140&geoId=100459316&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true",
@@ -2063,5 +2067,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-10-02T21:59:28.674056"
+  "updated_at": "2026-10-03T11:06:19.800712"
 }
