@@ -77,6 +77,7 @@
     "13ae5af0b1d76eec",
     "13fbd459de11cf9f",
     "14539a9514d01065",
+    "145a9a3b539d6567",
     "146e8921f8a52909",
     "147695694d5f08b1",
     "14fad5360b32fd3a",
@@ -252,6 +253,7 @@
     "4677030b063dee37",
     "472429bf4319f8bb",
     "47d392798970e556",
+    "47f28860f390e106",
     "485022ab697a413d",
     "4898d134f8979ab5",
     "48b665bdb225c499",
@@ -941,7 +943,6 @@
     "ch_c9ea8647088e",
     "ch_ca2e7326297d",
     "ch_ca3a8586ec35",
-    "ch_ca84d6a7fa42",
     "ch_caa71c1ef133",
     "ch_cb5614618fcd",
     "ch_cbed33f2fdd8",
@@ -1001,7 +1002,6 @@
     "ch_f477af855d8b",
     "ch_f47db1b5c30c",
     "ch_f587320f6b88",
-    "ch_f7a7776350e4",
     "ch_f7e02bbc10da",
     "ch_f817555f6373",
     "ch_f8357ec1efbb",
@@ -1009,6 +1009,7 @@
     "ch_f9cccf535260",
     "ch_fa6d9f20dbd9",
     "ch_fbc2a6879b9e",
+    "ch_fbf3d7e7fbed",
     "ch_fbf99268913c",
     "ch_fd4de5e85f42",
     "ch_fdc5df47ed9a",
@@ -1323,6 +1324,7 @@
     "https://hr.ataa.sa/recruitment",
     "https://htmisa.com/ar/application",
     "https://htmisa.com/ar/application/",
+    "https://irec.srg.gov.sa",
     "https://jadarat.sa",
     "https://jadarat.sa/EntityProfile?EntityId=TkZXc1Q5b2kxTk09&JobType=3&Param=3&RouterId=ekg2ekxTVE5NQ2s9",
     "https://jadarat.sa/ExploreJobs?JobTab=1",
@@ -1956,6 +1958,7 @@
     "https://www.ewdifh.com/jobs/86100",
     "https://www.ewdifh.com/jobs/86101",
     "https://www.ewdifh.com/jobs/86102",
+    "https://www.ewdifh.com/jobs/86103",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2076,5 +2079,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-10-04T11:47:13.425870"
+  "updated_at": "2026-10-04T21:04:22.488972"
 }
