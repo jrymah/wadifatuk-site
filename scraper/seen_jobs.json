@@ -132,6 +132,7 @@
     "224abdbf637d1ff9",
     "22fb5405de451017",
     "23b6233fedeea6fd",
+    "243704933703d9c1",
     "244d869b04482c6e",
     "249dd464bda8253d",
     "24e03068f1b908b7",
@@ -262,6 +263,7 @@
     "493a94c657cfeea8",
     "4940bfa5153f65f2",
     "498c908e1c2acabb",
+    "49e624ceb02267e8",
     "4a25fb51d1f07317",
     "4a446eccb689d6eb",
     "4aea02f2c8b7aafc",
@@ -786,6 +788,7 @@
     "ch_5debf0e0698c",
     "ch_5e04ac403a83",
     "ch_5e9997c6a5aa",
+    "ch_5e9fa093faa4",
     "ch_60d72c1fa8ff",
     "ch_614c05c9ddc0",
     "ch_6248328c155f",
@@ -915,6 +918,7 @@
     "ch_b4f5a2ea0779",
     "ch_b56dc158d095",
     "ch_b5c364d2da28",
+    "ch_b6d169eaab27",
     "ch_b70dd3339062",
     "ch_b7858b415a9b",
     "ch_b7bc071bcc1d",
@@ -1203,6 +1207,7 @@
     "https://care.talentera.com/en/job-search-results/?keyword=",
     "https://career-sa20.hr.cloud.sap/career?company=SATORPPROD",
     "https://career.alinmacapital.com/en/public/jobs",
+    "https://career.aljazirabank.com.sa/jobs",
     "https://career.dga.gov.sa/ar/page/coop-program/",
     "https://career.elm.sa/elm/search",
     "https://career.eyewa.com/jobs/70286a15-ac83-486f-988c-fbf625b13fd4",
@@ -1404,6 +1409,7 @@
     "https://pbs.twimg.com/media/HRmwrLJXsAIPSrL?format=jpg",
     "https://pbs.twimg.com/media/HRsNqKYWcAAoiKT?format=jpg",
     "https://pbs.twimg.com/media/HRt8r2LXcAAmfnv?format=jpg",
+    "https://pbs.twimg.com/media/HT375QbWoAAglzP?format=jpg",
     "https://pd.uhb.edu.sa/register",
     "https://pgdip.psau.edu.sa",
     "https://philips.wd3.myworkdayjobs.com/jobs-and-careers/job/Riyadh/General-Service-Support---Graduate-2_581080-1/?source=LinkedIn",
@@ -1983,6 +1989,8 @@
     "https://www.ewdifh.com/jobs/86107",
     "https://www.ewdifh.com/jobs/86108",
     "https://www.ewdifh.com/jobs/86110",
+    "https://www.ewdifh.com/jobs/86111",
+    "https://www.ewdifh.com/jobs/86112",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2104,5 +2112,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-10-05T13:36:56.791880"
+  "updated_at": "2026-10-05T23:53:49.752059"
 }
