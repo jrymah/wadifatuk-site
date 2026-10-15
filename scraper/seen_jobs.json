@@ -629,6 +629,7 @@
     "beaddcbaa0ef922b",
     "bee070b5ad68870f",
     "bfe6db3aa3d2d012",
+    "bfefb59712e3efa2",
     "c0d56a640bc55fe1",
     "c13acc41e3704811",
     "c199f6099c9246de",
@@ -734,6 +735,7 @@
     "ch_1c8f44a2f4a7",
     "ch_1cbe9c83619c",
     "ch_1d03c63e2417",
+    "ch_1db1d197c593",
     "ch_1de77a8991fa",
     "ch_1e46674aca04",
     "ch_1e65e72b27ad",
@@ -839,6 +841,7 @@
     "ch_63c559e8637a",
     "ch_6408db440852",
     "ch_64b36e76f1b8",
+    "ch_64e5d9902295",
     "ch_65450b02683a",
     "ch_65ed8e5a1728",
     "ch_663f0388dbdd",
@@ -1204,6 +1207,7 @@
     "f5a7e616166063f2",
     "f68128cd11ac708b",
     "f6ddf6e07f486143",
+    "f74b04fe52f1ff7e",
     "f7a2caaa2f54259f",
     "f81ba6e24143790e",
     "f8cc73da9fef1379",
@@ -1437,6 +1441,7 @@
     "https://jobs.tu.edu.sa/Identity/Account/Login?ReturnUrl=%2FDashboard",
     "https://jobse.gulf.edu.sa/",
     "https://kau.edu.sa/u/47lfG",
+    "https://kau.edu.sa/u/xb3Bg",
     "https://kkmar.sang.gov.sa/",
     "https://kkmar.sang.gov.sa/FrmNewsDetails.aspx?id=4",
     "https://kkmar.sang.gov.sa/FrmNewsDetails.aspx?id=5",
@@ -1562,6 +1567,7 @@
     "https://uqu.edu.sa/S/apVLF2",
     "https://web.derayah.com/ar/careers/derayah-gdp-ar/",
     "https://www.al-tamayyuz.com/programs/28",
+    "https://www.alahli.com/ar/pages/about-us/careers/snb-technology-program",
     "https://www.amazon.jobs/en/jobs/10482245/executive-assistant-ksa-national",
     "https://www.amazon.jobs/en/jobs/SF260123786/customer-service-associate-saudi-nationals",
     "https://www.aramco.com/ar/careers/for-saudi-applicants/student-opportunities/university-and-vocational-college-internship-programs/vocational-college-internship-program",
@@ -2096,6 +2102,8 @@
     "https://www.ewdifh.com/jobs/86144",
     "https://www.ewdifh.com/jobs/86145",
     "https://www.ewdifh.com/jobs/86146",
+    "https://www.ewdifh.com/jobs/86147",
+    "https://www.ewdifh.com/jobs/86148",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2229,5 +2237,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-10-15T10:51:52.257366"
+  "updated_at": "2026-10-15T21:07:43.438250"
 }
