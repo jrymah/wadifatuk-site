@@ -456,6 +456,7 @@
     "825019a9c70a1ce1",
     "825852f454a49bc8",
     "82d787a8b8dffedc",
+    "83375bcb26046f56",
     "83839a8c3b18ed4c",
     "8463a8ae5a8bae88",
     "847c08ff8043558a",
@@ -524,6 +525,7 @@
     "95f2b217020500d1",
     "9628bc70ba85db89",
     "967fbee845c8b913",
+    "96b50857f2bfd757",
     "96b83cca9ff961bf",
     "96d77f9a7970075d",
     "972b09d421ccbfc3",
@@ -834,6 +836,7 @@
     "ch_5e04ac403a83",
     "ch_5e9997c6a5aa",
     "ch_5e9fa093faa4",
+    "ch_5f4678a46372",
     "ch_60d72c1fa8ff",
     "ch_614c05c9ddc0",
     "ch_6157363f0f66",
@@ -895,6 +898,7 @@
     "ch_82e8afeabc46",
     "ch_847216d97d46",
     "ch_84933d1412a2",
+    "ch_852bc21bc4a4",
     "ch_854e0206db6d",
     "ch_85c991cf263b",
     "ch_860251b8842e",
@@ -1270,6 +1274,7 @@
     "https://care.talentera.com/ar/saudi-arabia/jobs/driver-3011-1100088375/",
     "https://care.talentera.com/en/job-search-results/?keyword=",
     "https://career-sa20.hr.cloud.sap/career?company=SATORPPROD",
+    "https://career-sa20.hr.cloud.sap/career?company=national15&site=&lang=ar_SA",
     "https://career.alinmacapital.com/en/public/jobs",
     "https://career.aljazirabank.com.sa/jobs",
     "https://career.dga.gov.sa/ar/page/coop-program/",
@@ -2104,6 +2109,8 @@
     "https://www.ewdifh.com/jobs/86146",
     "https://www.ewdifh.com/jobs/86147",
     "https://www.ewdifh.com/jobs/86148",
+    "https://www.ewdifh.com/jobs/86149",
+    "https://www.ewdifh.com/jobs/86150",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/apply/",
@@ -2184,6 +2191,7 @@
     "https://www.linkedin.com/jobs/search/?currentJobId=4440464208&f_C=18469%2C11395453&f_E=1&geoId=100459316&origin=JOB_SEARCH_PAGE_JOB_FILTER&refresh=true",
     "https://www.linkedin.com/jobs/search/?currentJobId=4440922184&f_C=86335303&geoId=100459316&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true",
     "https://www.linkedin.com/jobs/search/?currentJobId=4442997090&f_C=16046&f_TPR=r604800&geoId=100459316&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true",
+    "https://www.linkedin.com/jobs/search/?f_C=10163360&geoId=100459316",
     "https://www.linkedin.com/jobs/search/?f_C=681570%2C101456354&geoId=100459316",
     "https://www.linkedin.com/jobs/search/?f_C=706420&geoId=100459316",
     "https://www.linkedin.com/jobs/view/4399975502/",
@@ -2237,5 +2245,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-10-15T21:07:43.438250"
+  "updated_at": "2026-10-17T20:20:59.713232"
 }
