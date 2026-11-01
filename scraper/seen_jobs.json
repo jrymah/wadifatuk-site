@@ -118,7 +118,6 @@
     "1b8a592155e87022",
     "1bd4693e76a3dbb6",
     "1ca5121b31d9ee63",
-    "1d1b7eda09ba12c6",
     "1d22cc63a9115d60",
     "1d3f3ba779539709",
     "1d5598cd4f389580",
@@ -279,6 +278,7 @@
     "44b0f59b4a2d91c2",
     "452e32c9d662dbfe",
     "452e5b5cef44f596",
+    "456d302f2247b3e4",
     "458710f817f44f3a",
     "465efb242c678607",
     "4677030b063dee37",
@@ -998,6 +998,7 @@
     "ch_a2f74e660a90",
     "ch_a398f7111b50",
     "ch_a3a21f8dd538",
+    "ch_a3bc10514710",
     "ch_a3eb6879bf63",
     "ch_a411322f2140",
     "ch_a44112d910fb",
@@ -1028,7 +1029,6 @@
     "ch_b0b69b694d2b",
     "ch_b1da68b5c493",
     "ch_b2fcf363e7fc",
-    "ch_b34c3c44ac59",
     "ch_b4ef609eb6fe",
     "ch_b4f47e0edfdf",
     "ch_b4f5a2ea0779",
@@ -1126,7 +1126,6 @@
     "ch_e98a95fb250e",
     "ch_ea0d62264ed6",
     "ch_eb29c51320a4",
-    "ch_ecd21b56a1b2",
     "ch_ed0855734a0c",
     "ch_ed512d3c5a16",
     "ch_edcf20da37a4",
@@ -2275,7 +2274,7 @@
     "https://www.ewdifh.com/jobs/86206",
     "https://www.ewdifh.com/jobs/86208",
     "https://www.ewdifh.com/jobs/86209",
-    "https://www.ewdifh.com/jobs/86210",
+    "https://www.ewdifh.com/jobs/86212",
     "https://www.health.sa/ar/careers",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
@@ -2364,6 +2363,7 @@
     "https://www.linkedin.com/jobs/search/?currentJobId=4442997090&f_C=16046&f_TPR=r604800&geoId=100459316&origin=JOB_SEARCH_PAGE_LOCATION_SUGGESTION&refresh=true",
     "https://www.linkedin.com/jobs/search/?f_C=10163360&geoId=100459316",
     "https://www.linkedin.com/jobs/search/?f_C=13740813&geoId=100459316",
+    "https://www.linkedin.com/jobs/search/?f_C=16046%2C769732&geoId=100459316",
     "https://www.linkedin.com/jobs/search/?f_C=17890163&geoId=100459316",
     "https://www.linkedin.com/jobs/search/?f_C=218694&geoId=100459316",
     "https://www.linkedin.com/jobs/search/?f_C=593810&geoId=100459316",
@@ -2426,5 +2426,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-11-01T12:40:46.995593"
+  "updated_at": "2026-11-01T21:51:40.191340"
 }
