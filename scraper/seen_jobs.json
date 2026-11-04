@@ -64,6 +64,7 @@
     "104c43aaa2a3b207",
     "1057cfaa1f393446",
     "10a2ddec7860fffa",
+    "10a806ec9ec213bc",
     "10d9c539ed5cdb84",
     "1111811d8f20f2db",
     "1156da4b57a1f105",
@@ -699,6 +700,7 @@
     "c2634bfe69f0746c",
     "c2e39a31239e3f04",
     "c310809e790420c1",
+    "c33ee3620f28020e",
     "c496f0e845b8986a",
     "c4acb7f3b468c475",
     "c4e8a51e32ceea72",
@@ -721,6 +723,7 @@
     "ca09259a15e47d09",
     "ca858cdf312a635f",
     "ca888926e7693315",
+    "cab0f57ab3b079ff",
     "cac04ffaa408a12f",
     "caddc12e3ffb1e5e",
     "cb0dea147dd15965",
@@ -1081,6 +1084,7 @@
     "ch_beadc1f434da",
     "ch_bfea76eca029",
     "ch_c0076a314680",
+    "ch_c078bf1b3c35",
     "ch_c0dfb159d6a4",
     "ch_c153a57dd06c",
     "ch_c1e7f35b975f",
@@ -1391,6 +1395,7 @@
     "https://athkax.sdaia.gov.sa/",
     "https://athkax.sdaia.gov.sa/coop",
     "https://athkax.sdaia.gov.sa/programs",
+    "https://azm.edu.sa/ar",
     "https://banssb.pnu.edu.sa/PROD_ar/bwykolad.P_DispLoginNon#content",
     "https://banssb.pnu.edu.sa/PROD_ar/bwykolad.P_ShowQuesAns?applno=MTQ0MzEwMDAwMDA3Nzgx",
     "https://biralkamel.org.sa/jobs/",
@@ -2334,6 +2339,7 @@
     "https://www.ewdifh.com/jobs/86230",
     "https://www.ewdifh.com/jobs/86231",
     "https://www.ewdifh.com/jobs/86232",
+    "https://www.ewdifh.com/jobs/86233",
     "https://www.health.sa/ar/careers",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
@@ -2489,5 +2495,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-11-04T13:46:26.695354"
+  "updated_at": "2026-11-04T23:26:02.776947"
 }
