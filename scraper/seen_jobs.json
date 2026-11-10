@@ -34,6 +34,7 @@
     "090fc5f90c955e0a",
     "095034943777c4df",
     "0963e4d07876a7cb",
+    "09ac06d3cd65bf2f",
     "09e2340281fc06d2",
     "0a3f406fa5df3e4d",
     "0a5dff5d34aaafa8",
@@ -443,6 +444,7 @@
     "6c753d2fdf718ba8",
     "6ca77e1087245bd7",
     "6cd4ff1ef6f550d5",
+    "6d0c9109c6785618",
     "6d8082252886fa83",
     "6e07f3d029b66d16",
     "6e2cabd16e07ecb9",
@@ -906,6 +908,7 @@
     "ch_4ac7c02b545a",
     "ch_4b36f387efdb",
     "ch_4bfc46fe40be",
+    "ch_4d5aeebfad03",
     "ch_4eb54b1012bb",
     "ch_4ef8d1a683b6",
     "ch_4f20040628a3",
@@ -1143,6 +1146,7 @@
     "ch_d042ca2d8138",
     "ch_d05583b0c943",
     "ch_d0fa1d78788a",
+    "ch_d13cadb1734a",
     "ch_d152926a2e5f",
     "ch_d16ffae6d984",
     "ch_d1a549a46a86",
@@ -1579,6 +1583,7 @@
     "https://forms.brj.com.sa/CJSMarketing/form/SRAJobFair/formperma/zW4oIA82TJ3dWLmOKYkS-WefhMq0WltiWJDnhpbfFVc?zf_pf_id=835981",
     "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=tuyUOFpe0UeUIlIBBDzEE5GbtPYlcndCtvjej73rQilUQUxBSUlFRktDUkUxVlVQU0RHR1dUMklIMS4u&origin=QRCode",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=2XVxvk3NVUy63HTv2-CYq5L3EZ3yCcBHpKbsheZj-RBUQkxWSjYyQ1VNWlJHSTBMVDNDVk8yR1JQMSQlQCNjPTEu&route=shorturl",
+    "https://forms.cloud.microsoft/pages/responsepage.aspx?id=KSt2bocB0UW2JKb_SpQlHLGwZMv9HolPlslfcx51vZhUQUVLWEFTMzYwN09GUjBRMzZXWUY5QzZZTi4u&route=shorturl",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=S6tr4uaXVEexY2D4I36FMT_IEAmXqXBOqtlrw3kIoVBUMVVVVUYzVEwyNDA5WVlST1lCNjc3U0Y0OC4u&route=shorturl",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=XraasGOQYkivotdatIu6dP-1mUeSANNPju9zlZsBnjpUMDIyTkRJQUZDOUxVTThJRVQ3MENKT0ZTSS4u&OR=EXCEL-WEB.BODY.NT&CT=1787574360951&route=shorturl",
     "https://forms.cloud.microsoft/pages/responsepage.aspx?id=jfuTRsE5_kOhJikrWP2EHPBSqjlwYhBJgR5iO8IHUexURVJNNzBKTVlSRDVZRk5SWk5DODdJUFUzNS4u&origin=QRCode&qrcodeorigin=presentation&route=shorturl",
@@ -1727,6 +1732,7 @@
     "https://rpi.sa/register/ELM/BATCH037-ELM?lang=ar",
     "https://rpi.sa/register/ELT/BATCH003-ELT",
     "https://sa.zain.com/ar/ibm",
+    "https://sadeed.etec.gov.sa/",
     "https://safeer2.moe.gov.sa/Portal/",
     "https://saia.gov.sa/ar/pages/62",
     "https://saia.gov.sa/ar/pages/artificial-intelligence-for-business",
@@ -2408,6 +2414,8 @@
     "https://www.ewdifh.com/jobs/86253",
     "https://www.ewdifh.com/jobs/86254",
     "https://www.ewdifh.com/jobs/86255",
+    "https://www.ewdifh.com/jobs/86259",
+    "https://www.ewdifh.com/jobs/86260",
     "https://www.health.sa/ar/careers",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
@@ -2567,5 +2575,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-11-10T01:19:56.604260"
+  "updated_at": "2026-11-10T14:20:14.429157"
 }
