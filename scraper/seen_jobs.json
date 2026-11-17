@@ -237,6 +237,7 @@
     "37ea64fbc342e146",
     "381aa895d51a3f02",
     "386a5e1e93239903",
+    "386cdbd5817932e7",
     "3896635388beeaed",
     "38aa19649ffcc81d",
     "38f6c7e796c4c1d5",
@@ -248,6 +249,7 @@
     "39ea4027636ad714",
     "3a0c4241c2297b13",
     "3a3b6f613d4ad3eb",
+    "3af761ad598b4f2c",
     "3af8c2b9492e2b95",
     "3b0916b4120e7c16",
     "3b2ce4a0f7cf4e07",
@@ -997,6 +999,7 @@
     "ch_6a77b7b8b045",
     "ch_6ab2842eb3ad",
     "ch_6d9e97282853",
+    "ch_6e2130f57e55",
     "ch_6f3dd141e2d0",
     "ch_6fabb416f8b7",
     "ch_7107230f9707",
@@ -1017,6 +1020,7 @@
     "ch_756b3b5c5acb",
     "ch_75a561c96f54",
     "ch_760e3625b3f0",
+    "ch_7646a58acc78",
     "ch_76ff6a858379",
     "ch_777daa8cb474",
     "ch_789c4d50f5ca",
@@ -1815,6 +1819,7 @@
     "https://services.kfu.edu.sa/Admission",
     "https://services.kfu.edu.sa/Admission/",
     "https://services.kfu.edu.sa/admission/",
+    "https://services.kfu.edu.sa/tarmeez/c/7O4nZ67i9YpmBq6",
     "https://sfhm.moi.med.sa/Home/hr_services",
     "https://sgs.gov.sa/%D8%A7%D9%84%D9%85%D8%AA%D8%AF%D8%B1%D8%A8",
     "https://shorturl.at/zK3KG",
@@ -1862,6 +1867,7 @@
     "https://www.alahli.com/ar/pages/about-us/careers/snb-technology-program",
     "https://www.amazon.jobs/en/jobs/10482245/executive-assistant-ksa-national",
     "https://www.amazon.jobs/en/jobs/SF260123786/customer-service-associate-saudi-nationals",
+    "https://www.arabou.edu.sa/ar/admission/pages/undergraduate-apply.aspx",
     "https://www.aramco.com/ar/careers/for-saudi-applicants/student-opportunities/university-and-vocational-college-internship-programs/vocational-college-internship-program",
     "https://www.catrion.com/ar/careers",
     "https://www.ewdifh.com/jobs/85467",
@@ -2514,6 +2520,8 @@
     "https://www.ewdifh.com/jobs/86293",
     "https://www.ewdifh.com/jobs/86294",
     "https://www.ewdifh.com/jobs/86295",
+    "https://www.ewdifh.com/jobs/86296",
+    "https://www.ewdifh.com/jobs/86297",
     "https://www.health.sa/ar/careers",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
@@ -2679,5 +2687,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-11-17T01:45:12.093959"
+  "updated_at": "2026-11-17T15:29:40.153909"
 }
