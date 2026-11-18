@@ -480,6 +480,7 @@
     "72d50f845dda547e",
     "7326ed534cfe9044",
     "733f54f3b7eab91a",
+    "73800fbe5ab24218",
     "73d57ac4bfcebb8d",
     "74544285a6b52d9f",
     "7473c0aaed2732dd",
@@ -490,6 +491,7 @@
     "76464f5ccd0e5536",
     "766ce65178f252fb",
     "768d4544bc379211",
+    "76a0c68c82c14504",
     "76cba9a72c50da8a",
     "77724290eb2b6d55",
     "77cc3df82c22dfae",
@@ -1082,6 +1084,7 @@
     "ch_99714266aef0",
     "ch_9b193c69fd2d",
     "ch_9b324b662dd3",
+    "ch_9c46a6bcdaee",
     "ch_9d3c56a4e984",
     "ch_9d3dd93c2374",
     "ch_9dcfe737add8",
@@ -1473,6 +1476,7 @@
     "https://adm.tvtc.gov.sa/auth",
     "https://admission.bu.edu.sa/PROD_ad/xwskcadm.dispAdmissionGate?admissionType=PG",
     "https://admission.tu.edu.sa/guide",
+    "https://admission.uj.edu.sa",
     "https://admv2.kau.edu.sa/",
     "https://afca.mod.gov.sa/",
     "https://afca.mod.gov.sa/Login.aspx?ReturnUrl=%2f",
@@ -2522,6 +2526,7 @@
     "https://www.ewdifh.com/jobs/86295",
     "https://www.ewdifh.com/jobs/86296",
     "https://www.ewdifh.com/jobs/86297",
+    "https://www.ewdifh.com/jobs/86298",
     "https://www.health.sa/ar/careers",
     "https://www.hipit.edu.sa/ar/new-trainee-registration",
     "https://www.hrdf.org.sa/products-and-services/programs/individuals/training/cooperative-training/",
@@ -2687,5 +2692,5 @@
     "https://zadk.academiaerp.com/signup/",
     "https://zurl.co/Thivz"
   ],
-  "updated_at": "2026-11-17T15:29:40.153909"
+  "updated_at": "2026-11-18T00:46:21.322695"
 }
